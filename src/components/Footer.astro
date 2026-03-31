@@ -1,61 +1,47 @@
 ---
-import { getCollection } from 'astro:content'
 import business from '../data/business.json'
 
-const serviceEntries = await getCollection('services').catch(() => [])
-const serviceLinks = serviceEntries.length > 0
-  ? serviceEntries.map((s: any) => ({ name: s.data.name, href: `/servicios/${s.id}/` }))
-  : (business.services as string[]).map((name) => ({
-      name,
-      href: `/servicios/${name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}/`
-    }))
+const serviceLinks = (business.services as string[]).map((name) => ({
+  name,
+  href: `/servicios/${name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-')}/`
+}))
 
 const year = new Date().getFullYear()
 ---
 
-<footer class="bg-neutral text-neutral-content border-t border-neutral-content/10">
-  <div class="max-w-6xl mx-auto px-6 py-14">
-    <div class="grid md:grid-cols-3 gap-10 mb-10">
+<footer class="bg-blue-950 text-blue-100/60 pt-24 pb-12 overflow-hidden relative">
+  <!-- Decorative highlight -->
+  <div class="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-[#F97316] to-transparent"></div>
 
-      <!-- NAP -->
-      <div>
-        <span class="text-xl font-bold text-neutral-content block mb-3">{business.name}</span>
-        <p class="text-sm text-neutral-content/60 mb-5 leading-relaxed">{business.description}</p>
-        <div class="space-y-2">
-          <a href={`tel:${business.phone}`} class="flex items-center gap-2 text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
-            <svg class="w-4 h-4 text-brand-accent shrink-0" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-            </svg>
-            {business.phone}
-          </a>
-          {business.email && (
-            <a href={`mailto:${business.email}`} class="flex items-center gap-2 text-sm text-neutral-content/70 hover:text-neutral-content transition-colors">
-              <svg class="w-4 h-4 text-brand-accent shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              {business.email}
-            </a>
-          )}
-          <p class="flex items-start gap-2 text-sm text-neutral-content/60">
-            <svg class="w-4 h-4 text-brand-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" clip-rule="evenodd"/>
-            </svg>
-            {business.serviceArea.slice(0, 3).join(', ')}
-            {business.serviceArea.length > 3 && ` y ${business.serviceArea.length - 3} más`}
-          </p>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+
+      <!-- Branding / NAP -->
+      <div class="lg:col-span-1">
+        <div class="mb-8">
+           <span class="text-2xl font-black text-white italic tracking-tighter">JK <span class="text-[#F97316]">AISLAMIENTOS</span></span>
+           <p class="text-[9px] font-bold text-blue-300 uppercase tracking-[0.2em] mt-1 ml-0.5 opacity-50">Barcelona & Área Metropolitana</p>
+        </div>
+        <p class="text-sm font-medium mb-10 leading-relaxed italic pr-4">
+          Expertos certificados en la eliminación definitiva de moho y frío mediante el sistema Beissier Therm In.
+        </p>
+        <div class="flex gap-4">
+           {['facebook', 'instagram', 'google'].map((s) => (
+             <div class="w-10 h-10 bg-white/5 border border-white/5 rounded-xl flex items-center justify-center hover:bg-[#F97316]/20 hover:border-[#F97316]/30 transition-all cursor-pointer">
+                <span class="text-white text-xs font-black uppercase tracking-widest">{s[0]}</span>
+             </div>
+           ))}
         </div>
       </div>
 
-      <!-- Servicios -->
+      <!-- Quick Services -->
       <div>
-        <span class="text-sm font-bold uppercase tracking-widest text-neutral-content/50 block mb-4">Servicios</span>
-        <ul class="space-y-2">
-          {serviceLinks.map(({ name, href }) => (
+        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-white mb-10 pb-2 border-b border-white/5">NUESTROS SERVICIOS</h4>
+        <ul class="space-y-4">
+          {serviceLinks.slice(0, 4).map(({ name, href }) => (
             <li>
-              <a href={href} class="text-sm text-neutral-content/65 hover:text-neutral-content transition-colors flex items-center gap-1.5 group">
-                <svg class="w-3 h-3 text-brand-accent opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M9 5l7 7-7 7"/>
-                </svg>
+              <a href={href} class="text-sm font-medium hover:text-[#F97316] transition-colors flex items-center gap-3 group">
+                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-[#F97316] rounded-full transition-colors"></span>
                 {name}
               </a>
             </li>
@@ -63,21 +49,54 @@ const year = new Date().getFullYear()
         </ul>
       </div>
 
-      <!-- Legal -->
+      <!-- Locations -->
       <div>
-        <span class="text-sm font-bold uppercase tracking-widest text-neutral-content/50 block mb-4">Legal</span>
-        <ul class="space-y-2">
-          <li><a href="/legal/aviso-legal/" class="text-sm text-neutral-content/65 hover:text-neutral-content transition-colors">Aviso Legal</a></li>
-          <li><a href="/legal/politica-privacidad/" class="text-sm text-neutral-content/65 hover:text-neutral-content transition-colors">Política de Privacidad</a></li>
-          <li><a href="/legal/politica-cookies/" class="text-sm text-neutral-content/65 hover:text-neutral-content transition-colors">Política de Cookies</a></li>
+        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-white mb-10 pb-2 border-b border-white/5">CIUDADES TOP</h4>
+        <ul class="space-y-4">
+          {business.serviceArea.slice(0, 6).map((city) => (
+            <li>
+              <a href={`/${city.toLowerCase().replace(/\s+/g, '-')}/`} class="text-sm font-medium hover:text-[#F97316] transition-colors flex items-center gap-3 group">
+                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-[#F97316] rounded-full transition-colors"></span>
+                {city}
+              </a>
+            </li>
+          ))}
         </ul>
+      </div>
+
+      <!-- Contact Info / Direct -->
+      <div>
+        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-white mb-10 pb-2 border-b border-white/5">ATENCIÓN DIRECTA</h4>
+        <div class="space-y-6">
+          <div class="group">
+            <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1 italic">Llamada Gratuita</p>
+            <a href={`tel:${business.phone}`} class="text-2xl font-black text-white hover:text-[#F97316] transition-colors tracking-tight italic">
+              {business.phone}
+            </a>
+          </div>
+          <p class="text-sm font-medium pr-8">
+            <strong class="text-white">Horario oficina:</strong><br />
+            Lunes a Viernes: 08:30 — 19:00<br />
+            Barcelona capital y rodalies.
+          </p>
+          <a href="#contacto" class="inline-block py-3 px-6 bg-white/5 border border-white/10 text-white font-black text-[10px] uppercase tracking-widest rounded-full hover:bg-white hover:text-blue-900 transition-all">
+             PEDIR ESTUDIO TÉCNICO
+          </a>
+        </div>
       </div>
 
     </div>
 
-    <div class="border-t border-neutral-content/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-content/40">
-      <p>© {year} {business.name} — Todos los derechos reservados</p>
-      <p>Hecho con ❤️ en España</p>
+    <!-- Subfooter -->
+    <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+        {['Aviso Legal', 'Privacidad', 'Cookies'].map((l) => (
+          <a href="#" class="text-[10px] font-black uppercase tracking-[0.2em] hover:text-white transition-colors">{l}</a>
+        ))}
+      </div>
+      <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500/50">
+        © {year} {business.name}. <span class="bg-[#F97316]/10 text-[#F97316] px-3 py-1 rounded ml-2">SISTEMA BEISSIER CERTIFICADO</span>
+      </p>
     </div>
   </div>
 </footer>

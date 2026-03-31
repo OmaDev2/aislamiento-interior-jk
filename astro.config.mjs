@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
 
 export default defineConfig({
-  site: '__SITE_URL__',
+  site: 'https://aislainteriorbarcelona.es',
   output: 'static',
   adapter: netlify(),
   integrations: [

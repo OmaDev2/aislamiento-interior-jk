@@ -1,0 +1,81 @@
+{
+  "$ref": "#/definitions/services",
+  "definitions": {
+    "services": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "heroImage": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              },
+              "position": {
+                "type": "string",
+                "enum": [
+                  "hero",
+                  "mid",
+                  "closing",
+                  "gallery"
+                ]
+              },
+              "aspectRatio": {
+                "type": "string",
+                "enum": [
+                  "16:9",
+                  "4:3"
+                ],
+                "default": "16:9"
+              }
+            },
+            "required": [
+              "url",
+              "alt",
+              "position"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

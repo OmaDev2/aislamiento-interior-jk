@@ -1,0 +1,63 @@
+---
+---
+
+<section id="solucion" class="py-24 lg:py-32 bg-[#1E3A8A] text-white overflow-hidden relative">
+  <!-- Background Accents -->
+  <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center mb-20">
+      <span class="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest rounded-full mb-6 border border-white/20">La Solución Definitiva</span>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight mb-8">
+        Aísla Tu Casa Por Dentro, <br class="hidden md:block" />
+        <span class="text-[#F97316]">Sin Tocar la Fachada</span>
+      </h2>
+      <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-3xl mx-auto">
+        El sistema profesional <strong>Beissier Therm In</strong> aísla tu vivienda por dentro, elimina humedades y reduce tu factura energética. <br class="hidden md:block" /> Perfecto para pisos y edificios protegidos de Barcelona.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      {[
+        {
+          num: "01",
+          title: "Eliminación Total de Humedades",
+          desc: "Sistema anti-condensación que previene moho y manchas definitivamente. Especialmente efectivo en zonas húmedas de Barcelona.",
+          icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+        },
+        {
+          num: "02",
+          title: "Ahorro Energético Certificado",
+          desc: "Hasta 40% de mejora térmica. Reduce tu factura hasta un 20%. Datos certificados por laboratorio Beissier.",
+          icon: "M13 2L3 14h9v8l10-12h-9l1-10z"
+        },
+        {
+          num: "03",
+          title: "Mínimo Espesor, Máximo Confort",
+          desc: "Solo 15mm de grosor total. No pierdes espacio habitable en tu piso. Ideal para Eixample y Ciutat Vella.",
+          icon: "M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0ZM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"
+        }
+      ].map((item, i) => (
+        <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-all duration-500 relative overflow-hidden">
+          <div class="absolute -top-4 -right-4 text-8xl font-black text-white/5 group-hover:text-white/10 transition-colors">{item.num}</div>
+          
+          <div class="w-16 h-16 bg-[#F97316] rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-[#F97316]/20 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d={item.icon}></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-4 leading-tight">{item.title}</h3>
+          <p class="text-white/70 leading-relaxed text-base mb-8">
+            {item.desc}
+          </p>
+          
+          <a href="#sistema" class="inline-flex items-center gap-2 text-[#F97316] font-bold group-hover:gap-3 transition-all">
+            Ver funcionamiento 
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

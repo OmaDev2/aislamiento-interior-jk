@@ -1,18 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import HeroSection from '../components/HeroSection.astro'
-import ServiceCard from '../components/ServiceCard.astro'
+import UrgencyStrip from '../components/UrgencyStrip.astro'
+import ProblemsSection from '../components/ProblemsSection.astro'
+import SolutionSection from '../components/SolutionSection.astro'
+import EspesorSection from '../components/EspesorSection.astro'
+import SystemLayersSection from '../components/SystemLayersSection.astro'
+import WhenNeededSection from '../components/WhenNeededSection.astro'
+import ProcessSection from '../components/ProcessSection.astro'
+import RealCasesSection from '../components/RealCasesSection.astro'
+import FaqSection from '../components/FaqSection.astro'
 import CityGrid from '../components/CityGrid.astro'
 import ContactSection from '../components/ContactSection.astro'
-import { getCollection } from 'astro:content'
 import business from '../data/business.json'
 import home from '../data/home.json'
 
-const services = await getCollection('services')
-
 const h1 = home.h1 || `${business.name} en ${business.serviceArea?.[0]}`
 const heroSubtitle = home.heroSubtitle || undefined
-const servicesHeading = home.servicesHeading || 'Nuestros servicios'
 ---
 
 <BaseLayout
@@ -20,125 +24,20 @@ const servicesHeading = home.servicesHeading || 'Nuestros servicios'
   description={(home as any).metaDescription || business.description.slice(0, 155)}
 >
 
+  <UrgencyStrip />
   <HeroSection h1={h1} subtitle={heroSubtitle} />
 
-  <!-- ── STATS ────────────────────────────────────────────── -->
-  <section class="py-12 bg-brand-primary text-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        {[
-          { num: '+500', label: 'Clientes satisfechos' },
-          { num: '+10', label: 'Años de experiencia' },
-          { num: '24h', label: 'Respuesta garantizada' },
-          { num: '100%', label: 'Presupuestos gratis' },
-        ].map((stat, i) => (
-          <div class={`reveal reveal-delay-${i + 1}`}>
-            <p class="text-4xl md:text-5xl font-black mb-1">{stat.num}</p>
-            <p class="text-sm text-white/75 font-medium uppercase tracking-wide">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ProblemsSection />
+  <SolutionSection />
+  <EspesorSection />
+  <SystemLayersSection />
+  <WhenNeededSection />
+  <ProcessSection />
+  <RealCasesSection />
+  <FaqSection />
 
-  <!-- ── SERVICIOS ──────────────────────────────────────── -->
-  <section id="servicios" class="py-20 bg-base-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12 reveal">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3 block">Lo que hacemos</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">{servicesHeading}</h2>
-        <p class="text-lg text-base-content/60 max-w-2xl mx-auto">
-          Soluciones profesionales adaptadas a cada cliente en toda el área de {business.serviceArea?.[0]}.
-        </p>
-      </div>
-      {services.length > 0 ? (
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <div class={`reveal reveal-delay-${Math.min(i + 1, 4)}`}>
-              <ServiceCard
-                name={service.data.name}
-                description={service.data.description}
-                slug={service.id}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {business.services?.map((name: string, i: number) => (
-            <div class={`reveal reveal-delay-${Math.min(i + 1, 4)} bg-base-100 rounded-2xl shadow-md p-8 border border-base-200`}>
-              <div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-base-content">{name}</h3>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
-
-  <!-- ── POR QUÉ ELEGIRNOS ──────────────────────────────── -->
-  <section class="py-20 bg-base-200">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12 reveal">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3 block">Nuestras ventajas</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">¿Por qué elegirnos?</h2>
-        <p class="text-lg text-base-content/60 max-w-xl mx-auto">
-          Profesionalidad, transparencia y resultados garantizados.
-        </p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          { icon: '⚡', title: 'Respuesta rápida', desc: 'Contactamos contigo en menos de 1 hora. Sin esperas innecesarias.' },
-          { icon: '💰', title: 'Precio justo', desc: 'Presupuesto detallado y sin sorpresas. Lo que acordamos, eso pagas.' },
-          { icon: '🏆', title: 'Experiencia probada', desc: 'Más de 10 años de trabajo en la zona y cientos de clientes satisfechos.' },
-          { icon: '✅', title: 'Trabajo garantizado', desc: 'Garantizamos todos nuestros trabajos. Si hay un problema, lo solucionamos.' },
-        ].map((item, i) => (
-          <div class={`reveal reveal-delay-${i + 1} bg-base-100 rounded-2xl p-8 shadow-sm border border-base-200 text-center group hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}>
-            <div class="text-4xl mb-5 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-            <h3 class="text-lg font-bold text-base-content mb-3">{item.title}</h3>
-            <p class="text-base-content/60 text-sm leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PROCESO ────────────────────────────────────────── -->
-  <section class="py-20 bg-base-100">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="text-center mb-14 reveal">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3 block">Así trabajamos</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-base-content mb-4">Cómo trabajamos</h2>
-        <p class="text-lg text-base-content/60">Simple, rápido y sin complicaciones.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8 relative">
-        <!-- Línea conectora desktop -->
-        <div class="hidden md:block absolute top-8 left-1/6 right-1/6 h-px bg-base-300 z-0"></div>
-        {[
-          { step: '01', title: 'Contacta con nosotros', desc: 'Llámanos o escríbenos por WhatsApp. Te atendemos de inmediato.' },
-          { step: '02', title: 'Recibe tu presupuesto', desc: 'Te enviamos un presupuesto detallado y sin compromiso en 24h.' },
-          { step: '03', title: 'Confirmamos y trabajamos', desc: 'Acordamos fecha y realizamos el trabajo con la máxima calidad.' },
-        ].map((item, i) => (
-          <div class={`reveal reveal-delay-${i + 1} text-center relative z-10`}>
-            <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-brand-primary/30">
-              <span class="text-white font-black text-xl">{item.step}</span>
-            </div>
-            <h3 class="text-xl font-bold text-base-content mb-3">{item.title}</h3>
-            <p class="text-base-content/60 leading-relaxed text-sm">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ZONAS ──────────────────────────────────────────── -->
   <CityGrid />
 
-  <!-- ── CONTACTO ───────────────────────────────────────── -->
   <ContactSection />
 
 </BaseLayout>

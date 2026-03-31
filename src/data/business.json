@@ -1,37 +1,42 @@
 {
-  "name": "__BUSINESS_NAME__",
-  "legalName": "__BUSINESS_NAME__",
-  "type": "__SCHEMA_TYPE__",
-  "phone": "__PHONE__",
-  "email": "__EMAIL__",
-  "url": "__SITE_URL__",
+  "name": "Aislamiento Térmico Interior JK",
+  "legalName": "Aislamiento Térmico Interior JK",
+  "type": "HomeAndConstructionBusiness",
+  "phone": "+34644371602",
+  "email": "",
+  "url": "https://aislainteriorbarcelona.es",
   "logo": "/images/logo.png",
-  "priceRange": "$$",
-  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
-  "serviceArea": ["__CITY_PRIMARY__"],
-  "services": ["__SERVICE_1__"],
+  "priceRange": "€€",
+  "openingHours": ["Mo-Fr 08:00-19:00"],
+  "serviceArea": ["Barcelona", "Eixample", "Gràcia", "Les Corts", "Sarrià", "Sant Martí", "Sant Andreu", "Poblenou", "L'Hospitalet", "Badalona", "Sant Cugat", "Cornellà", "Sant Boi", "Castelldefels", "Viladecans"],
+  "services": [
+    "Aislamiento Térmico Paredes Sin Obra",
+    "Eliminación Moho y Condensación",
+    "Aislamiento Térmico Techos",
+    "Sistema Beissier Therm In"
+  ],
   "socialProfiles": {
     "facebook": "",
     "instagram": "",
     "google": "",
     "yelp": ""
   },
-  "founded": "",
-  "description": "__BUSINESS_DESCRIPTION__",
+  "founded": "2018",
+  "description": "Instaladores certificados Beissier Therm In en Barcelona. Aislamiento térmico interior sin obra. Eliminamos frío, moho y condensación en 2-3 días sin tocar la fachada.",
   "reviews": {
-    "ratingValue": "__RATING_VALUE__",
-    "reviewCount": "__REVIEW_COUNT__"
+    "ratingValue": "4.9",
+    "reviewCount": "87"
   },
   "address": {
-    "street": "",
-    "postalCode": "",
-    "city": ""
+    "street": "Carrer d'Ausona, 71",
+    "postalCode": "08033",
+    "city": "Barcelona"
   },
   "geo": {
-    "latitude": "",
-    "longitude": ""
+    "latitude": "41.4287",
+    "longitude": "2.1801"
   },
-  "daisyuiTheme": "__DAISYUI_THEME__",
+  "daisyuiTheme": "corporate",
   "gtmId": "",
   "scVerification": ""
 }

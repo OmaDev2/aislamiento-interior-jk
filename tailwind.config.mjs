@@ -5,17 +5,28 @@ export default {
     extend: {
       colors: {
         brand: {
-          // Mapeados a las variables CSS de DaisyUI — cambian automáticamente con data-theme
-          primary: 'hsl(var(--p) / <alpha-value>)',
+          blue: {
+            DEFAULT: '#1E3A8A', // --primary-color
+            hover: '#1E40AF',   // --primary-hover
+            dark: '#1e3a8a',
+            darker: '#172554'
+          },
+          orange: {
+            DEFAULT: '#F97316', // --secondary-color
+            hover: '#EA580C',   // --secondary-hover
+          },
           accent:  'hsl(var(--a) / <alpha-value>)',
-          dark: '#0f172a',
-          light: '#f8fafc',
-        }
+          dark:    '#1F2937',   // --dark
+          light:   '#F3F4F6',   // --gray-lighter
+        },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans:    ['Inter', 'system-ui', 'sans-serif'],
         heading: ['Inter', 'system-ui', 'sans-serif'],
       },
+      backgroundImage: {
+        'premium-gradient': 'linear-gradient(135deg, #1E3A8A 0%, #1E40AF 100%)',
+      }
     },
   },
   plugins: [
@@ -23,7 +34,7 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: true,   // habilita los 35 temas built-in
+    themes: true,
     logs: false,
   },
 }
