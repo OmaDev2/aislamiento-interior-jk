@@ -1,0 +1,128 @@
+---
+import business from '../data/business.json'
+
+interface Props {
+  city?: string
+  pageType?: 'home' | 'city' | 'service'
+}
+
+const { city, pageType = 'home' } = Astro.props
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+// Expande abreviaturas de días a nombres completos requeridos por schema.org
+// "Mo-Fr" → ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+// "Sa"    → ["Saturday"]
+const dayAbbrMap: Record<string, string> = {
+  Mo: 'Monday', Tu: 'Tuesday', We: 'Wednesday',
+  Th: 'Thursday', Fr: 'Friday', Sa: 'Saturday', Su: 'Sunday',
+}
+const dayOrder = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+function expandDays(daysStr: string): string[] {
+  if (daysStr.includes('-')) {
+    const [start, end] = daysStr.split('-')
+    const si = dayOrder.indexOf(start)
+    const ei = dayOrder.indexOf(end)
+    if (si >= 0 && ei >= 0) return dayOrder.slice(si, ei + 1).map(d => dayAbbrMap[d])
+  }
+  return daysStr.split(',').map(d => dayAbbrMap[d.trim()]).filter((d): d is string => Boolean(d))
+}
+
+// Teléfono en formato E.164 — añade +34 si no tiene prefijo internacional
+const phoneE164 = business.phone
+  ? (business.phone.startsWith('+') ? business.phone : `+34${business.phone}`)
+  : undefined
+
+// sameAs: solo incluir perfiles no vacíos
+const sameAsUrls = Object.values(business.socialProfiles as Record<string, string>).filter(Boolean)
+
+// Dirección: si hay calle → Local Business con dirección completa
+//            si no       → SAB sin calle (solo ciudad del área de servicio)
+const addr = (business as any).address
+const geo  = (business as any).geo
+const addressSchema = addr?.street
+  ? {
+      "@type": "PostalAddress",
+      "streetAddress": addr.street,
+      "addressLocality": addr.city || business.serviceArea[0],
+      "postalCode": addr.postalCode || "",
+      "addressCountry": "ES"
+    }
+  : {
+      "@type": "PostalAddress",
+      "addressLocality": business.serviceArea[0],
+      "addressCountry": "ES"
+    }
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": business.type,
+      "@id": `${business.url}/#business`,
+      "name": business.name,
+      "url": business.url,
+      ...(phoneE164 ? { "telephone": phoneE164 } : {}),
+      "priceRange": business.priceRange,
+      "description": business.description,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${business.url}${business.logo}`
+      },
+      "image": `${business.url}${business.logo}`,
+      "address": addressSchema,
+      ...(geo?.latitude && geo?.longitude ? {
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": geo.latitude,
+          "longitude": geo.longitude
+        }
+      } : {}),
+      "areaServed": business.serviceArea.map((c: string) => ({
+        "@type": "City",
+        "name": c
+      })),
+      "openingHoursSpecification": business.openingHours.map((hours: string) => {
+        const [days, time] = hours.split(' ')
+        const [opens, closes] = time.split('-')
+        return {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": expandDays(days),
+          "opens": opens,
+          "closes": closes
+        }
+      }),
+      ...(sameAsUrls.length > 0 ? { "sameAs": sameAsUrls } : {}),
+      ...(business.reviews?.ratingValue && business.reviews.ratingValue !== '' ? {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": business.reviews.ratingValue,
+          "reviewCount": business.reviews.reviewCount,
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      } : {}),
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": `Servicios de ${business.name}`,
+        "itemListElement": business.services.map((service: string) => ({
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": service
+          }
+        }))
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${business.url}/#website`,
+      "url": business.url,
+      "name": business.name,
+      "publisher": { "@id": `${business.url}/#business` }
+    }
+  ]
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema, null, 0)} />

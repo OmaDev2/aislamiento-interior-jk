@@ -1,0 +1,37 @@
+{
+  "name": "__BUSINESS_NAME__",
+  "legalName": "__BUSINESS_NAME__",
+  "type": "__SCHEMA_TYPE__",
+  "phone": "__PHONE__",
+  "email": "__EMAIL__",
+  "url": "__SITE_URL__",
+  "logo": "/images/logo.png",
+  "priceRange": "$$",
+  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
+  "serviceArea": ["__CITY_PRIMARY__"],
+  "services": ["__SERVICE_1__"],
+  "socialProfiles": {
+    "facebook": "",
+    "instagram": "",
+    "google": "",
+    "yelp": ""
+  },
+  "founded": "",
+  "description": "__BUSINESS_DESCRIPTION__",
+  "reviews": {
+    "ratingValue": "__RATING_VALUE__",
+    "reviewCount": "__REVIEW_COUNT__"
+  },
+  "address": {
+    "street": "",
+    "postalCode": "",
+    "city": ""
+  },
+  "geo": {
+    "latitude": "",
+    "longitude": ""
+  },
+  "daisyuiTheme": "__DAISYUI_THEME__",
+  "gtmId": "",
+  "scVerification": ""
+}

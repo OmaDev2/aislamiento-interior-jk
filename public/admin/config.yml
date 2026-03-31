@@ -1,0 +1,194 @@
+backend:
+  name: git-gateway
+  branch: master  # cámbialo a 'main' si tu repo usa main
+
+media_folder: public/images
+public_folder: /images
+
+locale: es
+
+collections:
+
+  # ── Páginas de ciudad ────────────────────────────────────────────────────────
+  - name: locations
+    label: Páginas de ciudad
+    label_singular: Ciudad
+    folder: src/content/locations
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Ciudad, name: city, widget: string }
+      - { label: "Provincia / Estado", name: state, widget: string, required: false }
+      - { label: "H1 de la página", name: h1, widget: string, hint: "Con keyword principal + ciudad" }
+      - { label: "Title (SEO)", name: title, widget: string, hint: "Máximo 60 caracteres" }
+      - { label: "Meta description", name: description, widget: text, hint: "Máximo 155 caracteres" }
+      - { label: "Imagen hero (URL)", name: heroImage, widget: string, required: false, hint: "URL de Unsplash, ej: https://images.unsplash.com/photo-...?w=1200&h=675&fit=crop" }
+      - label: "Barrios y zonas"
+        name: neighborhoods
+        widget: list
+        required: false
+        field: { label: Barrio, name: neighborhood, widget: string }
+      - label: "Puntos de referencia"
+        name: landmarks
+        widget: list
+        required: false
+        field: { label: Landmark, name: landmark, widget: string }
+      - { label: "Rango de precios", name: priceRange, widget: string, required: false, hint: "Ej: 15-30 €/m²" }
+      - label: Keywords
+        name: keywords
+        widget: list
+        required: false
+        field: { label: Keyword, name: keyword, widget: string }
+      - label: "Preguntas frecuentes (FAQs)"
+        name: faqs
+        widget: list
+        required: false
+        fields:
+          - { label: Pregunta, name: question, widget: string }
+          - { label: Respuesta, name: answer, widget: text }
+      - { label: Contenido de la página, name: body, widget: markdown }
+
+  # ── Páginas de servicio ──────────────────────────────────────────────────────
+  - name: services
+    label: Páginas de servicio
+    label_singular: Servicio
+    folder: src/content/services
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: "Nombre del servicio", name: name, widget: string }
+      - { label: "Title (SEO)", name: title, widget: string, hint: "Máximo 60 caracteres" }
+      - { label: "Meta description", name: description, widget: text, hint: "Máximo 155 caracteres" }
+      - { label: "Imagen hero (URL)", name: heroImage, widget: string, required: false }
+      - { label: "Precio orientativo", name: price, widget: string, required: false, hint: "Ej: Desde 50€" }
+      - { label: "Duración estimada", name: duration, widget: string, required: false, hint: "Ej: 1-2 días" }
+      - label: Keywords
+        name: keywords
+        widget: list
+        required: false
+        field: { label: Keyword, name: keyword, widget: string }
+      - { label: Contenido de la página, name: body, widget: markdown }
+
+  # ── Configuración del negocio + Home ─────────────────────────────────────────
+  - name: settings
+    label: "Configuración"
+    files:
+      - name: home
+        label: "Portada (Home)"
+        file: src/data/home.json
+        fields:
+          - { label: "Imagen hero (URL)", name: heroImageUrl, widget: string, hint: "URL de Unsplash/Pexels, ej: https://images.unsplash.com/photo-...?w=1920&h=1080&fit=crop" }
+          - { label: "Alt de la imagen hero", name: heroImageAlt, widget: string, required: false, hint: "Si se deja vacío se genera automáticamente" }
+          - { label: "H1 principal", name: h1, widget: string, required: false, hint: "Si se deja vacío se genera desde el nombre y tipo del negocio" }
+          - { label: "Subtítulo del hero", name: heroSubtitle, widget: string, required: false, hint: "Si se deja vacío: 'Servicio profesional en [ciudad] y alrededores'" }
+          - { label: "Texto del botón CTA", name: ctaText, widget: string, default: "Solicitar presupuesto gratis" }
+          - { label: "Título de la sección servicios", name: servicesHeading, widget: string, default: "Nuestros servicios" }
+
+      - name: business
+        label: "Datos del negocio"
+        file: src/data/business.json
+        fields:
+          - { label: "Nombre del negocio", name: name, widget: string }
+          - { label: "Nombre legal", name: legalName, widget: string }
+          - { label: "Tipo Schema.org", name: type, widget: string, hint: "Ej: Plumber, Electrician, HVACBusiness, HomeAndConstructionBusiness" }
+          - { label: Teléfono, name: phone, widget: string }
+          - { label: Email, name: email, widget: string, required: false }
+          - { label: "URL del sitio", name: url, widget: string }
+          - { label: "Logo (ruta)", name: logo, widget: string, hint: "Ej: /images/logo.png" }
+          - label: "Rango de precios"
+            name: priceRange
+            widget: select
+            options: ["$", "$$", "$$$", "$$$$"]
+          - label: "Horarios de atención"
+            name: openingHours
+            widget: list
+            field: { label: Horario, name: hours, widget: string, hint: "Ej: Mo-Fr 08:00-18:00" }
+          - label: "Ciudades de servicio"
+            name: serviceArea
+            widget: list
+            field: { label: Ciudad, name: city, widget: string }
+          - label: Servicios
+            name: services
+            widget: list
+            field: { label: Servicio, name: service, widget: string }
+          - label: "Perfiles sociales"
+            name: socialProfiles
+            widget: object
+            fields:
+              - { label: Facebook, name: facebook, widget: string, required: false }
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: "Google Business", name: google, widget: string, required: false }
+              - { label: Yelp, name: yelp, widget: string, required: false }
+          - { label: "Año de fundación", name: founded, widget: string, required: false }
+          - label: "Dirección física (opcional — solo si el negocio tiene local)"
+            name: address
+            widget: object
+            required: false
+            hint: "Dejar vacío si es SAB (negocio sin local físico)"
+            fields:
+              - { label: "Calle y número", name: street, widget: string, required: false, hint: "Ej: Calle Mayor 12, 3º" }
+              - { label: "Código postal", name: postalCode, widget: string, required: false }
+              - { label: "Ciudad", name: city, widget: string, required: false }
+          - label: "Coordenadas GPS (opcional — si tienes dirección física)"
+            name: geo
+            widget: object
+            required: false
+            hint: "Busca las coordenadas en maps.google.com → clic derecho sobre el local"
+            fields:
+              - { label: Latitud, name: latitude, widget: string, required: false, hint: "Ej: 41.6488" }
+              - { label: Longitud, name: longitude, widget: string, required: false, hint: "Ej: -0.8891" }
+          - { label: Descripción, name: description, widget: text, hint: "1-2 frases con keyword principal" }
+          - label: "Reseñas (solo datos reales)"
+            name: reviews
+            widget: object
+            fields:
+              - { label: "Nota media", name: ratingValue, widget: string, required: false, hint: "Ej: 4.8 — dejar vacío si no tienes reseñas verificables" }
+              - { label: "Número de reseñas", name: reviewCount, widget: string, required: false }
+          - label: "Tema visual"
+            name: daisyuiTheme
+            widget: select
+            hint: "Elige el tema visual del sitio. Vista previa en daisyui.com/docs/themes"
+            options:
+              - light
+              - dark
+              - cupcake
+              - bumblebee
+              - emerald
+              - corporate
+              - synthwave
+              - retro
+              - cyberpunk
+              - valentine
+              - halloween
+              - garden
+              - forest
+              - aqua
+              - lofi
+              - pastel
+              - fantasy
+              - wireframe
+              - black
+              - luxury
+              - dracula
+              - cmyk
+              - autumn
+              - business
+              - acid
+              - lemonade
+              - night
+              - coffee
+              - winter
+              - dim
+              - nord
+              - sunset
+              - caramellatte
+              - abyss
+              - silk
+          - { label: "Google Tag Manager ID", name: gtmId, widget: string, required: false, hint: "Ej: GTM-XXXXXXX — dejar vacío si no tienes GTM" }
+          - { label: "Google Search Console", name: scVerification, widget: string, required: false, hint: "Código de verificación de Search Console (solo el código, sin las comillas)" }
