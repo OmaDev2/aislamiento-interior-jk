@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # ¡IMPORTANTE! Cámbialo a 'main' si tu rama principal se llama así
+  branch: main # ¡IMPORTANTE! Cámbialo a 'main' si tu rama se llama así
 
 media_folder: public/images
 public_folder: /images
@@ -39,12 +39,12 @@ collections:
         name: neighborhoods
         widget: list
         required: false
-        field: { widget: string }
+        field: { name: neighborhood, label: Barrio, widget: string }
       - label: "Puntos de referencia"
         name: landmarks
         widget: list
         required: false
-        field: { widget: string }
+        field: { name: landmark, label: Referencia, widget: string }
       - {
           label: "Rango de precios",
           name: priceRange,
@@ -55,7 +55,7 @@ collections:
         name: keywords
         widget: list
         required: false
-        field: { widget: string }
+        field: { name: keyword, label: Keyword, widget: string }
       - label: "Preguntas frecuentes (FAQs)"
         name: faqs
         widget: list
@@ -101,7 +101,7 @@ collections:
         name: keywords
         widget: list
         required: false
-        field: { widget: string }
+        field: { name: keyword, label: Keyword, widget: string }
       - { label: Contenido de la página, name: body, widget: markdown }
 
   # ── Configuración del negocio + Home ─────────────────────────────────────────
@@ -133,7 +133,7 @@ collections:
               - label: "Textos de advertencia"
                 name: items
                 widget: list
-                field: { widget: string }
+                field: { name: item, label: Texto, widget: string }
 
           - name: hero
             label: "Sección Principal (Hero)"
@@ -155,11 +155,11 @@ collections:
               - label: "Puntos de dolor"
                 name: painPoints
                 widget: list
-                field: { widget: string }
+                field: { name: point, label: Punto, widget: string }
               - label: "Características de confianza"
                 name: trustFeatures
                 widget: list
-                field: { widget: string }
+                field: { name: feature, label: Característica, widget: string }
               - {
                   label: "Texto Botón Principal",
                   name: ctaPrimary,
@@ -227,9 +227,9 @@ collections:
           - label: "Ciudades de servicio"
             name: serviceArea
             widget: list
-            field: { widget: string }
+            field: { name: city, label: Ciudad, widget: string }
           - label: "Servicios"
             name: services
             widget: list
-            field: { widget: string }
+            field: { name: service, label: Servicio, widget: string }
           - { label: "GTM ID", name: gtmId, widget: string, required: false }
