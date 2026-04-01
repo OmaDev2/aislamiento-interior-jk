@@ -4,15 +4,15 @@ import heroImg from "../assets/images/hero-bg.png";
 import business from "../data/business.json";
 import home from "../data/home.json";
 
+const h = home.hero
 interface Props {
-  h1: string;
+  h1?: string;
   subtitle?: string;
 }
 
 const {
-  h1 = home.h1 || "¿Paredes Frías o Humedad en Casa?",
-  subtitle = home.heroSubtitle ||
-    "Elimina el frío, el moho y la condensación en 48h sin reformar tu vivienda.",
+  h1 = h.h1,
+  subtitle = h.subtitle,
 } = Astro.props;
 
 const phone = business.phone || "644 37 16 02";
@@ -20,7 +20,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
 ---
 
 <section
-  class="hero-section relative py-20 lg:py-32 overflow-hidden bg-[#1E3A8A]"
+  class="hero-section relative py-20 lg:py-32 overflow-hidden bg-brand-blue"
 >
   <!-- Astro Image Background -->
   <div class="absolute inset-0 z-0">
@@ -32,11 +32,11 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
     />
     <!-- Overlay for readability -->
     <div
-      class="absolute inset-0 bg-[#1E3A8A]/85 mix-blend-multiply transition-opacity duration-300"
+      class="absolute inset-0 bg-brand-blue/85 mix-blend-multiply transition-opacity duration-300"
     >
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-tr from-[#1E3A8A] via-transparent to-[#1E3A8A]/20 opacity-90"
+      class="absolute inset-0 bg-gradient-to-tr from-brand-blue via-transparent to-brand-blue/20 opacity-90"
     >
     </div>
   </div>
@@ -56,7 +56,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
             ></path>
           </svg>
           <span class="text-xs md:text-sm font-medium tracking-tight">
-            4.9/5 - 87 Valoraciones +80 viviendas en Barcelona
+            {h.trustBadge}
           </span>
         </div>
 
@@ -66,8 +66,8 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
         >
           {h1}
           <br />
-          <span class="text-[#F97316] block mt-1 drop-shadow-sm"
-            >Solución Sin Obras en Barcelona</span
+          <span class="text-brand-orange block mt-1 drop-shadow-sm"
+            >{h.h1Highlight}</span
           >
         </h1>
 
@@ -77,32 +77,22 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
         >
           {subtitle}
           <br class="hidden md:block" />
-          Ahorra hasta un 40% en calefacción desde el primer invierno.
+          {h.subtitleExtra}
         </p>
 
         <!-- Pain Points Grid (Features) -->
         <div class="grid grid-cols-2 gap-4 mb-10 animate-fade-in-up delay-200">
           {
             [
-              {
-                icon: "M2 12h10M9 4v16m-6-11 3 3-3 3M12 6 9 9 6 6m0 12 3-3 1.5 1.5",
-                text: "Paredes Frías",
-              },
-              {
-                icon: "M8 2c3 0 5 2 8 2s4-1 4-1v11s-1 1-4 1-5-2-8-2-4 1-4 1V2s1-1 4-1M4 22v-7",
-                text: "Moho y Humedad",
-              },
-              {
-                icon: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
-                text: "Facturas Altas",
-              },
-              {
-                icon: "M4 2h16v20H4V2Zm5 20v-4h6v4",
-                text: "Sin Obra Exterior",
-              },
-            ].map((item) => (
+              "M2 12h10M9 4v16m-6-11 3 3-3 3M12 6 9 9 6 6m0 12 3-3 1.5 1.5",
+              "M8 2c3 0 5 2 8 2s4-1 4-1v11s-1 1-4 1-5-2-8-2-4 1-4 1V2s1-1 4-1M4 22v-7",
+              "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+              "M4 2h16v20H4V2Zm5 20v-4h6v4",
+            ].map((icon, i) => {
+              const item = { icon, text: h.painPoints[i] }
+              return (
               <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all group">
-                <div class="w-10 h-10 bg-[#F97316]/20 rounded-xl flex items-center justify-center text-[#F97316] group-hover:scale-110 transition-transform">
+                <div class="w-10 h-10 bg-brand-orange/20 rounded-xl flex items-center justify-center text-brand-orange group-hover:scale-110 transition-transform">
                   <svg
                     width="20"
                     height="20"
@@ -120,7 +110,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
                   {item.text}
                 </span>
               </div>
-            ))
+            )})
           }
         </div>
 
@@ -129,10 +119,10 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
           class="flex flex-wrap gap-x-6 gap-y-3 mb-12 animate-fade-in-up delay-300"
         >
           {
-            ["Sin tocar fachada", "Garantía 10 años", "Ahorro 40%"].map((f) => (
+            h.trustFeatures.map((f) => (
               <div class="flex items-center gap-2 text-sm font-medium text-blue-100/80">
                 <svg
-                  class="w-5 h-5 text-[#F97316]"
+                  class="w-5 h-5 text-brand-orange"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="3"
@@ -156,9 +146,9 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
         >
           <a
             href="#contacto"
-            class="w-full sm:w-auto px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white font-black text-lg rounded-full shadow-2xl shadow-[#F97316]/30 transition-all text-center uppercase tracking-tight transform hover:scale-105"
+            class="w-full sm:w-auto px-10 py-5 bg-brand-orange hover:bg-brand-orange-hover text-white font-black text-lg rounded-full shadow-2xl shadow-brand-orange/30 transition-all text-center uppercase tracking-tight transform hover:scale-105"
           >
-            Presupuesto Gratis
+            {h.ctaPrimary}
           </a>
           <a
             href={phoneLink}
@@ -174,11 +164,11 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
         <div
           class="form-card bg-white rounded-3xl shadow-2xl p-8 md:p-10 text-gray-800"
         >
-          <h2 class="text-3xl font-extrabold text-[#1E3A8A] mb-2">
-            ¿Cuánto Me Cuesta?
+          <h2 class="text-3xl font-extrabold text-brand-blue mb-2">
+            {h.form.heading}
           </h2>
           <p class="text-sm text-gray-500 mb-8 leading-relaxed font-medium">
-            Te calculamos el precio en 24h · Inspección gratis a domicilio
+            {h.form.subtitle}
           </p>
 
           <form
@@ -195,8 +185,8 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
               <input
                 type="text"
                 name="nombre"
-                placeholder="Tu nombre"
-                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1E3A8A] focus:border-transparent outline-none transition-all"
+                placeholder={h.form.fields.nombre}
+                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
                 required
               />
             </div>
@@ -205,8 +195,8 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
               <input
                 type="tel"
                 name="telefono"
-                placeholder="Teléfono"
-                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1E3A8A] focus:border-transparent outline-none transition-all"
+                placeholder={h.form.fields.telefono}
+                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
                 required
               />
             </div>
@@ -215,8 +205,8 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
               <input
                 type="text"
                 name="codigoPostal"
-                placeholder="Código Postal (Barcelona)"
-                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1E3A8A] focus:border-transparent outline-none transition-all"
+                placeholder={h.form.fields.codigoPostal}
+                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all"
                 required
               />
             </div>
@@ -224,14 +214,13 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
             <div class="relative">
               <select
                 name="problema"
-                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1E3A8A] focus:border-transparent outline-none transition-all appearance-none text-gray-400 focus:text-gray-900"
+                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all appearance-none text-gray-400 focus:text-gray-900"
                 required
               >
-                <option value="">¿Cuál es tu problema?</option>
-                <option value="frio">Paredes frías / Pérdida de calor</option>
-                <option value="moho">Moho y humedad</option>
-                <option value="factura">Factura calefacción alta</option>
-                <option value="sate">No puedo hacer SATE exterior</option>
+                <option value="">{h.form.fields.problema}</option>
+                {h.form.options.map((o) => (
+                  <option value={o.value}>{o.label}</option>
+                ))}
               </select>
               <div
                 class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400"
@@ -251,9 +240,9 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
 
             <button
               type="submit"
-              class="w-full py-5 bg-[#F97316] hover:bg-[#EA580C] text-white font-black text-xl rounded-2xl shadow-xl shadow-[#F97316]/30 transition-all transform hover:scale-[1.02] active:scale-[0.98] mt-4 uppercase tracking-tight"
+              class="w-full py-5 bg-brand-orange hover:bg-brand-orange-hover text-white font-black text-xl rounded-2xl shadow-xl shadow-brand-orange/30 transition-all transform hover:scale-[1.02] active:scale-[0.98] mt-4 uppercase tracking-tight"
             >
-              Ver Cuánto Me Cuesta →
+              {h.form.submitText}
             </button>
 
             <div
@@ -271,7 +260,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
                 ><rect x="3" y="11" width="18" height="11" rx="2" ry="2"
                 ></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
               >
-              <span>Sin compromiso · Respuesta en 24h · Sin spam</span>
+              <span>{h.form.disclaimer}</span>
             </div>
           </form>
         </div>
@@ -285,7 +274,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
   >
   </div>
   <div
-    class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#1E3A8A] rounded-full blur-[200px] opacity-30 pointer-events-none"
+    class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-blue rounded-full blur-[200px] opacity-30 pointer-events-none"
   >
   </div>
 </section>

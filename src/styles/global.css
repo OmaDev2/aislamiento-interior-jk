@@ -4,28 +4,6 @@
 
 @layer base {
   :root {
-    --primary-color: #1E3A8A;
-    --primary-hover: #1E40AF;
-    --secondary-color: #F97316;
-    --secondary-hover: #EA580C;
-    --success-color: #10B981;
-    --warning-color: #F59E0B;
-    --danger-color: #EF4444;
-    --dark: #1F2937;
-    --gray-dark: #374151;
-    --gray: #6B7280;
-    --gray-light: #D1D5DB;
-    --gray-lighter: #F3F4F6;
-    --white: #FFFFFF;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --border-radius: 12px;
-    --border-radius-sm: 8px;
-    --border-radius-lg: 16px;
-    --transition: all 0.3s ease;
-    
     scroll-behavior: smooth;
   }
 
@@ -44,11 +22,11 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold rounded-xl transition-all shadow-lg hover:-translate-y-0.5 active:scale-95;
+    @apply inline-flex items-center justify-center px-8 py-5 bg-brand-orange hover:bg-brand-orange-hover text-white font-black rounded-full transition-all shadow-xl shadow-brand-orange/30 hover:scale-105 active:scale-95;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-[#1E3A8A] text-[#1E3A8A] hover:bg-[#1E3A8A] hover:text-white font-bold rounded-xl transition-all;
+    @apply inline-flex items-center justify-center px-8 py-5 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-black rounded-full transition-all;
   }
 }
 

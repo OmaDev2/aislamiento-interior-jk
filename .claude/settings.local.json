@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__astro-docs__search_astro_docs",
+      "Bash(npx astro:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/olga/DESARROLLO/WEBS_EN_CURSO/aislamiento-interior-jk/src/content"
+    ]
+  }
+}

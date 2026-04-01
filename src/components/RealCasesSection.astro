@@ -1,44 +1,24 @@
 ---
+import home from '../data/home.json'
+
+const { badge, heading, headingExtra, subtitle, cases, trustBadges } = home.realCases
 ---
 
-<section id="casos-reales" class="py-24 lg:py-32 bg-white overflow-hidden">
+<section id="casos-reales" class="py-24 lg:py-32 bg-gray-50 overflow-hidden">
   <div class="container mx-auto px-4">
-    <!-- Header -->
     <div class="max-w-4xl mx-auto text-center mb-16 lg:mb-24">
-      <span class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-widest rounded-full mb-6 italic">CONFIANZA LOCAL</span>
+      <span class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 text-xs font-black uppercase tracking-widest rounded-full mb-6">{badge}</span>
       <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
-        Instalaciones <span class="text-blue-700">Beissier Therm In</span> <br class="hidden md:block" /> 
-        Reales en Barcelona
+        {heading} <span class="text-blue-700">{heading.includes('Beissier') ? '' : ''}</span> <br class="hidden md:block" />
+        {headingExtra}
       </h2>
-      <p class="text-xl text-gray-500 font-medium italic">Más de 200 viviendas aisladas con éxito en el área metropolitana.</p>
-      <div class="h-1.5 w-24 bg-[#F97316] mx-auto rounded-full mt-8"></div>
+      <p class="text-xl text-gray-500 font-medium">{subtitle}</p>
+      <div class="h-1.5 w-24 bg-brand-orange mx-auto rounded-full mt-8"></div>
     </div>
 
-    <!-- Casos Grid -->
     <div class="grid md:grid-cols-2 gap-8 lg:gap-12 mb-20">
-      {[
-        {
-          tag: "Eixample, Barcelona",
-          title: "Piso en Edificio Modernista",
-          treated: "45m² tratados",
-          rooms: "Dormitorio + Salón",
-          problem: "Moho recurrente en esquinas, pared fría. Edificio protegido sin posibilidad SATE.",
-          result: "Moho eliminado completamente + Ahorro 22% en factura gas",
-          testimony: "Probamos 3 soluciones antes. Solo Beissier Therm In funcionó definitivamente. Han pasado 2 años sin moho. Lo recomiendo totalmente.",
-          author: "Carlos M., Eixample"
-        },
-        {
-          tag: "Gràcia, Barcelona",
-          title: "Vivienda en Edificio Protegido",
-          treated: "28m² tratados",
-          rooms: "Fachada Norte",
-          problem: "No podían tocar fachada. Condensación severa en ventanas. Manchas negras constantes.",
-          result: "Temperatura pared +8°C. Cero condensación. Certificación energética mejorada.",
-          testimony: "Vivíamos con mantas en el sofá en invierno. Ahora la temperatura es perfecta y no hay ni rastro de humedad.",
-          author: "Laura T., Gràcia"
-        }
-      ].map((caso) => (
-        <div class="bg-gray-50 rounded-[3rem] p-10 lg:p-14 border border-gray-100 hover:border-blue-200 transition-all duration-500 group relative">
+      {cases.map((caso) => (
+        <div class="bg-white rounded-3xl p-10 lg:p-14 border border-gray-100 hover:border-blue-200 transition-all duration-500 group relative">
           <div class="absolute top-10 right-10 opacity-5 group-hover:opacity-10 transition-opacity">
             <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
@@ -46,11 +26,11 @@
           <span class="inline-block px-4 py-1.5 bg-blue-900 text-white text-[10px] font-black uppercase tracking-widest rounded-full mb-8">
             {caso.tag}
           </span>
-          
+
           <h3 class="text-3xl font-black text-gray-900 mb-6 leading-tight group-hover:text-blue-900 transition-colors">
             {caso.title}
           </h3>
-          
+
           <div class="flex gap-6 mb-8 pb-8 border-b border-gray-200">
             <div class="flex flex-col">
               <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Superficie</span>
@@ -77,8 +57,8 @@
             </div>
           </div>
 
-          <blockquote class="bg-white p-8 rounded-2xl border-l-4 border-[#F97316] italic text-gray-500 shadow-sm relative">
-             <div class="absolute -top-4 left-6 text-4xl text-[#F97316]/20 font-serif leading-none">“</div>
+          <blockquote class="bg-gray-50 p-8 rounded-2xl border-l-4 border-brand-orange text-gray-500 shadow-sm relative">
+             <div class="absolute -top-4 left-6 text-4xl text-brand-orange/20 font-serif leading-none">"</div>
              "{caso.testimony}"
              <cite class="block mt-4 text-xs font-black text-blue-900/40 uppercase tracking-widest not-italic">— {caso.author}</cite>
           </blockquote>
@@ -86,18 +66,12 @@
       ))}
     </div>
 
-    <!-- Trust Badges -->
-    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-gray-100">
-       {[
-         { val: "200+", label: "Viviendas Aisladas", icon: "🏢" },
-         { val: "10 Años", label: "Garantía Certificada", icon: "🛡️" },
-         { val: "100%", label: "Moho Eliminado", icon: "✨" },
-         { val: "24h", label: "Presupuesto Gratis", icon: "⏱️" }
-       ].map((badge) => (
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-gray-200">
+       {trustBadges.map((b) => (
          <div class="text-center">
-            <span class="text-3xl mb-3 block">{badge.icon}</span>
-            <p class="text-2xl font-black text-blue-900 leading-none mb-1">{badge.val}</p>
-            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{badge.label}</p>
+            <span class="text-3xl mb-3 block">{b.icon}</span>
+            <p class="text-2xl font-black text-blue-900 leading-none mb-1">{b.value}</p>
+            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{b.label}</p>
          </div>
        ))}
     </div>

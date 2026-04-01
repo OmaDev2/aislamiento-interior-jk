@@ -6,18 +6,16 @@ export default {
       colors: {
         brand: {
           blue: {
-            DEFAULT: '#1E3A8A', // --primary-color
-            hover: '#1E40AF',   // --primary-hover
-            dark: '#1e3a8a',
-            darker: '#172554'
+            DEFAULT: '#1E3A8A',
+            hover: '#1E40AF',
+            dark: '#172554',
           },
           orange: {
-            DEFAULT: '#F97316', // --secondary-color
-            hover: '#EA580C',   // --secondary-hover
+            DEFAULT: '#F97316',
+            hover: '#EA580C',
           },
-          accent:  'hsl(var(--a) / <alpha-value>)',
-          dark:    '#1F2937',   // --dark
-          light:   '#F3F4F6',   // --gray-lighter
+          dark:    '#1F2937',
+          light:   '#F3F4F6',
         },
       },
       fontFamily: {

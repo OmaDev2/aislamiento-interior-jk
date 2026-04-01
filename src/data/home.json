@@ -1,9 +1,335 @@
 {
-  "siteTitle": "Aislamiento Térmico Paredes Sin Obra Barcelona | Beissier Therm In | JK",
-  "h1": "¿Paredes Frías o Moho en Casa?",
-  "heroSubtitle": "Sistema certificado Beissier Therm In. Elimina frío, moho y condensación en 2-3 días sin tocar la fachada. Ahorra hasta un 40% en calefacción.",
-  "heroImageAlt": "Instalador certificado Beissier Therm In aplicando aislamiento térmico en pared de vivienda en Barcelona",
-  "metaDescription": "Instaladores certificados Beissier Therm In en Barcelona. Aislamiento térmico paredes sin obra. Elimina frío, moho y condensación en 48h. ☎ 644 37 16 02",
-  "ctaText": "Quiero Eliminar el Frío de Mi Casa",
-  "servicesHeading": "Nuestros servicios de aislamiento"
+  "meta": {
+    "siteTitle": "Aislamiento Térmico Paredes Sin Obra Barcelona | Beissier Therm In | JK",
+    "metaDescription": "Instaladores certificados Beissier Therm In en Barcelona. Aislamiento térmico paredes sin obra. Elimina frío, moho y condensación en 48h. ☎ 644 37 16 02"
+  },
+
+  "urgencyStrip": {
+    "items": ["Paredes Frías", "Humedades", "Moho y manchas", "Facturas disparadas"],
+    "badge": "Solución sin obras"
+  },
+
+  "hero": {
+    "h1": "¿Paredes Frías o Moho en Casa?",
+    "h1Highlight": "Solución Sin Obras en Barcelona",
+    "subtitle": "Elimina el frío, el moho y la condensación en 48h sin reformar tu vivienda.",
+    "subtitleExtra": "Ahorra hasta un 40% en calefacción desde el primer invierno.",
+    "trustBadge": "4.9/5 - 30 Valoraciones +50 viviendas en Barcelona",
+    "painPoints": [
+      "Paredes Frías",
+      "Moho y Humedad",
+      "Facturas Altas",
+      "Sin Obra Exterior"
+    ],
+    "trustFeatures": ["Sin tocar fachada", "Garantía 10 años", "Ahorro 40%"],
+    "ctaPrimary": "Presupuesto Gratis",
+    "form": {
+      "heading": "¿Cuánto Me Cuesta?",
+      "subtitle": "Te calculamos el precio en 24h · Inspección gratis a domicilio",
+      "fields": {
+        "nombre": "Tu nombre",
+        "telefono": "Teléfono",
+        "codigoPostal": "Código Postal (Barcelona)",
+        "problema": "¿Cuál es tu problema?"
+      },
+      "options": [
+        { "value": "frio", "label": "Paredes frías / Pérdida de calor" },
+        { "value": "moho", "label": "Moho y humedad" },
+        { "value": "factura", "label": "Factura calefacción alta" },
+        { "value": "sate", "label": "No puedo hacer SATE exterior" }
+      ],
+      "submitText": "Ver Cuánto Me Cuesta →",
+      "disclaimer": "Sin compromiso · Respuesta en 24h · Sin spam"
+    }
+  },
+
+  "problems": {
+    "badge": "Realidad en Barcelona",
+    "heading": "¿Te Suena Alguno de Estos Problemas en tu Vivienda?",
+    "cards": [
+      {
+        "title": "Paredes Heladas en Invierno",
+        "description": "Tocas la pared y está congelada. Tu calefacción trabaja el doble sin conseguir confort en tu piso de Barcelona."
+      },
+      {
+        "title": "Moho y Manchas Negras",
+        "description": "Aparecen en esquinas y detrás de muebles. Afecta a tu salud y la de tu familia. Problema común en edificios antiguos."
+      },
+      {
+        "title": "Facturas Desorbitadas",
+        "description": "Pagas una fortuna en calefacción pero el calor se escapa por las paredes mal aisladas."
+      },
+      {
+        "title": "No Puedes Hacer SATE Exterior",
+        "description": "Edificio protegido o la comunidad no aprueba obras en fachada. Situación muy común en el Eixample y Ciutat Vella."
+      }
+    ],
+    "cta": "Quiero Quitar la Humedad de Mi Casa"
+  },
+
+  "solution": {
+    "badge": "La Solución Definitiva",
+    "heading": "Aísla Tu Casa Por Dentro, Sin Tocar la Fachada",
+    "subtitle": "Sistema Certificado · Instalación en 48h · Garantía 10 Años",
+    "intro": "El sistema profesional Beissier Therm In aísla tu vivienda por dentro, elimina humedades y reduce tu factura energética. Perfecto para edificios protegidos de Barcelona.",
+    "cards": [
+      {
+        "title": "Eliminación Total de Humedades",
+        "description": "Nuestro sistema 'Beissier Therm In' crea una barrera térmica que elimina la condensación y el moho de raíz. Respira aire puro y saludable."
+      },
+      {
+        "title": "Ahorro Energético Inmediato",
+        "description": "Reduce hasta un 40% tu factura de gas y luz. Tu casa mantendrá el calor en invierno y el frescor en verano de forma eficiente."
+      },
+      {
+        "title": "Instalación Rápida y Sin Obras",
+        "description": "En solo 48 horas transformamos tu hogar. Sin ruidos excesivos, sin escombros y sin necesidad de permisos comunitarios."
+      }
+    ],
+    "secondaryCta": "¿Tienes dudas sobre tu caso particular?"
+  },
+
+  "espesor": {
+    "badge": "FACTOR ESPESOR",
+    "heading": "Solo 15mm.",
+    "headingHighlight": "Tu Piso No Pierde Ni 1 Metro",
+    "text": "En pisos pequeños de Barcelona, cada centímetro cuenta. El sistema <strong>Beissier Therm In</strong> utiliza placas de poliestireno de alta densidad de bajo espesor que ofrecen máximo aislamiento con mínima pérdida de espacio.",
+    "infoBadge": "Ideal para pisos de 40-70m² en Eixample, Gràcia y Ciutat Vella",
+    "cta": "Ver Precio Para Mi Piso",
+    "comparisonTitle": "Comparativa de Espesores",
+    "comparisons": [
+      { "name": "Beissier Therm In", "thickness": "15mm", "recommended": true },
+      { "name": "Pladur + Lana mineral", "thickness": "60-80mm", "widthPercent": 75 },
+      { "name": "Trasdosado aislante", "thickness": "80-120mm", "widthPercent": 100 },
+      { "name": "SATE Exterior", "thickness": "N/A", "notViable": true, "notViableReason": "No viable en fachada protegida" }
+    ],
+    "comparisonFooter": "Con Beissier Therm In pierdes <strong class=\"text-blue-900 font-black italic\">4-8 veces menos espacio</strong> que con otros sistemas de aislamiento interior."
+  },
+
+  "systemLayers": {
+    "badge": "POR QUÉ ES DIFERENTE A OTROS AISLANTES",
+    "heading": "Las 4 Capas del Sistema",
+    "headingHighlight": "Beissier Therm In",
+    "warning": "<strong>Importante:</strong> Otros instaladores en Barcelona solo ponen placas genéricas. Nosotros aplicamos el sistema <span class=\"font-bold underline decoration-amber-400\">COMPLETO certificado Beissier</span> con garantía oficial.",
+    "layers": [
+      {
+        "title": "Preparación del Soporte",
+        "items": ["Desinfección profesional", "Consolidación del muro", "Imprimación especializada", "Garantiza adhesión perfecta"],
+        "featured": false
+      },
+      {
+        "title": "Placas Aislantes Therm In",
+        "subtitle": "9mm de espesor",
+        "items": ["Conductividad λ = 0,031 W/m·K", "20 placas = 10m² de superficie", "Instalación continua", "Sin juntas térmicas"],
+        "featured": true
+      },
+      {
+        "title": "Malla de Refuerzo",
+        "badge": "Evita fisuras a largo plazo",
+        "items": ["Revoco Fino BMB12002", "Malla Beissier 160 g/m²", "Protección antifisuras", "Capa de 3mm de protección"],
+        "featured": false
+      },
+      {
+        "title": "Acabado Térmico",
+        "items": ["Imprimación FIXACRYL", "Pintura Beta Therm In", "Maximiza eficiencia térmica", "Acabado listo para habitar"],
+        "featured": false
+      }
+    ],
+    "specsTitle": "Especificaciones",
+    "specsSubtitle": "Resumen Técnico del Sistema",
+    "specs": [
+      { "label": "Espesor total:", "value": "~15mm", "icon": "📏" },
+      { "label": "Mejora térmica:", "value": "Hasta 40%", "icon": "🌡️" },
+      { "label": "Garantía Beissier:", "value": "Certificada", "icon": "🛡️" },
+      { "label": "Ahorro energía:", "value": "Hasta 20%", "icon": "⚡" }
+    ]
+  },
+
+  "whenNeeded": {
+    "heading": "¿Es Beissier Therm In la Solución",
+    "headingHighlight": "Para Tu Vivienda en Barcelona?",
+    "subtitle": "El sistema está diseñado específicamente para estos casos:",
+    "cards": [
+      {
+        "title": "Edificios Donde NO se Puede Hacer SATE Exterior",
+        "items": [
+          "Fachadas protegidas en Eixample, Gràcia o Ciutat Vella",
+          "Comunidad no aprueba obras exteriores",
+          "Edificio catalogado o con protección patrimonial",
+          "No tienes acceso a fachada (piso interior)"
+        ]
+      },
+      {
+        "title": "Viviendas con Condensación y Moho Recurrente",
+        "items": [
+          "Has pintado varias veces y vuelve a aparecer",
+          "Manchas negras en esquinas y detrás de muebles",
+          "Olor a humedad constante",
+          "Problemas respiratorios por moho"
+        ]
+      },
+      {
+        "title": "Paredes con \"Efecto Pared Fría\"",
+        "items": [
+          "Tocas la pared en invierno y está helada",
+          "La calefacción no consigue calentar",
+          "Sensación de frío aunque calefacción encendida",
+          "Diferencia térmica notable con otras habitaciones"
+        ]
+      }
+    ],
+    "cta": "SOLICITAR MI ESTUDIO GRATUITO"
+  },
+
+  "process": {
+    "badge": "PROCESO CERTIFICADO",
+    "heading": "Cómo Instalamos Beissier Therm In",
+    "headingHighlight": "En Tu Vivienda de Barcelona",
+    "subtitle": "En solo 2-3 días, sin obras molestas y con limpieza total.",
+    "steps": [
+      {
+        "title": "Desmontaje y Preparación",
+        "time": "Día 1: Preparación",
+        "items": [
+          "Carpinteros desmontan radiadores y zócalos",
+          "Electricistas retiran mecanismos y enchufes",
+          "Protección total de suelos y mobiliario",
+          "Aspiración integrada: trabajo <strong>sin polvo</strong>"
+        ]
+      },
+      {
+        "title": "Instalación del Sistema",
+        "time": "Día 1-2: Aislamiento",
+        "items": [
+          "Colocación de placas Beissier Therm In",
+          "Aplicación de malla de refuerzo (160g/m²)",
+          "Sellado técnico de juntas y perímetros",
+          "Control exhaustivo de puentes térmicos"
+        ]
+      },
+      {
+        "title": "Tendido y Alisado Profesional",
+        "time": "Día 2: Acabado",
+        "items": [
+          "Aplicación de revoco multicapa",
+          "Alisado maestro de alta calidad",
+          "Paredes perfectamente niveladas",
+          "Listo para pintar (acabado premium)"
+        ]
+      },
+      {
+        "title": "Montaje Final y Entrega",
+        "time": "Día 3: Entrega",
+        "items": [
+          "Reinstalación de radiadores y electricidad",
+          "Montaje de carpintería y acabados",
+          "Limpieza profunda final",
+          "Doble garantía: Materiales + Ejecución"
+        ]
+      }
+    ],
+    "trustSignal": {
+      "heading": "¿Quieres un presupuesto sin compromiso?",
+      "text": "Visita técnica gratuita en toda Barcelona para evaluar puentes térmicos y condensación.",
+      "ctaPrimary": "ME INTERESA UN DIAGNÓSTICO",
+      "ctaSecondary": "LLAMAR AHORA:"
+    }
+  },
+
+  "realCases": {
+    "badge": "CONFIANZA LOCAL",
+    "heading": "Instalaciones Beissier Therm In",
+    "headingExtra": "Reales en Barcelona",
+    "subtitle": "Más de 200 viviendas aisladas con éxito en el área metropolitana.",
+    "cases": [
+      {
+        "tag": "Eixample, Barcelona",
+        "title": "Piso en Edificio Modernista",
+        "treated": "45m² tratados",
+        "rooms": "Dormitorio + Salón",
+        "problem": "Moho recurrente en esquinas, pared fría. Edificio protegido sin posibilidad SATE.",
+        "result": "Moho eliminado completamente + Ahorro 22% en factura gas",
+        "testimony": "Probamos 3 soluciones antes. Solo Beissier Therm In funcionó definitivamente. Han pasado 2 años sin moho. Lo recomiendo totalmente.",
+        "author": "Carlos M., Eixample"
+      },
+      {
+        "tag": "Gràcia, Barcelona",
+        "title": "Vivienda en Edificio Protegido",
+        "treated": "28m² tratados",
+        "rooms": "Fachada Norte",
+        "problem": "No podían tocar fachada. Condensación severa en ventanas. Manchas negras constantes.",
+        "result": "Temperatura pared +8°C. Cero condensación. Certificación energética mejorada.",
+        "testimony": "Vivíamos con mantas en el sofá en invierno. Ahora la temperatura es perfecta y no hay ni rastro de humedad.",
+        "author": "Laura T., Gràcia"
+      }
+    ],
+    "trustBadges": [
+      { "value": "200+", "label": "Viviendas Aisladas", "icon": "🏢" },
+      { "value": "10 Años", "label": "Garantía Certificada", "icon": "🛡️" },
+      { "value": "100%", "label": "Moho Eliminado", "icon": "✨" },
+      { "value": "24h", "label": "Presupuesto Gratis", "icon": "⏱️" }
+    ]
+  },
+
+  "faq": {
+    "badge": "RESOLVEMOS TUS DUDAS",
+    "heading": "Preguntas Frecuentes Sobre",
+    "headingHighlight": "Beissier Therm In en Barcelona",
+    "items": [
+      {
+        "question": "¿Cuánto cuesta el sistema Beissier Therm In en Barcelona?",
+        "answer": "El precio del sistema Beissier Therm In en Barcelona es de <strong>110 €/m²</strong> (todo incluido). Es un servicio llave en mano que incluye carpinteros para desmontar/montar radiadores y zócalos, electricistas para los mecanismos, el sistema de aislamiento de 4 capas y el alisado final listo para pintar. No hay extras ni sorpresas."
+      },
+      {
+        "question": "¿Qué diferencia hay entre Beissier Therm In y otras placas?",
+        "answer": "Beissier Therm In es un SISTEMA COMPLETO certificado, no solo placas aislantes. Incluye 4 capas que trabajan en conjunto: preparación del soporte, placas aislantes, revoco con malla de refuerzo y acabado térmico. Solo instaladores certificados pueden aplicar el sistema completo y ofrecer la garantía del fabricante de 10 años."
+      },
+      {
+        "question": "¿Cuánto dura la instalación en mi casa?",
+        "answer": "Al ser un servicio integral llave en mano (desmontaje, aislamiento, alisado profesional y montaje posterior), el tiempo estimado para un dormitorio estándar de 12m² es de <strong>2 a 3 días</strong>. Utilizamos sistemas de aspiración integrada para asegurar un trabajo sin polvo y con las mínimas molestias para ti."
+      },
+      {
+        "question": "¿Funciona para eliminar moho definitivamente?",
+        "answer": "Sí, el sistema Beissier Therm In elimina definitivamente el moho causado por condensación y pared fría. El sistema aumenta la temperatura de la superficie interior de la pared, evitando que el aire húmedo condense y genere moho. Es extremadamente efectivo en edificios antiguos de Barcelona."
+      },
+      {
+        "question": "¿Perderé mucho espacio en mi habitación?",
+        "answer": "Esa es la gran ventaja: el sistema completo tiene solo <strong>15mm de espesor</strong>. Comparado con los 60-100mm de un trasdosado de Pladur convencional, la pérdida de espacio es prácticamente imperceptible. Es ideal para habitaciones pequeñas o pasillos estrechos."
+      },
+      {
+        "question": "¿Es necesario pedir permisos de obra?",
+        "answer": "Al ser una actuación por el interior que no afecta a elementos estructurales ni a la fachada exterior, normalmente no requiere permisos de obras mayores. Es una solución perfecta para edificios catalogados o comunidades donde no se permite actuar en la fachada."
+      }
+    ],
+    "supportText": "¿Tienes alguna otra pregunta específica sobre tu vivienda?",
+    "whatsappCta": "CONSULTAR POR WHATSAPP"
+  },
+
+  "cityGrid": {
+    "badge": "PROXIMIDAD BARCELONA",
+    "heading": "Áreas de",
+    "headingHighlight": "Servicio y Proyectos",
+    "subtitle": "Realizamos estudios técnicos gratuitos en todos los distritos de Barcelona y poblaciones del Área Metropolitana.",
+    "signals": ["Visita técnica 100% gratuita", "Sin compromisos", "Respuesta en 24h"]
+  },
+
+  "contact": {
+    "badge": "PRESUPUESTO SIN COMPROMISO",
+    "heading": "Solicita Tu",
+    "headingHighlight": "Estudio Gratuito",
+    "subtitle": "Analizamos los puentes térmicos y problemas de condensación de tu vivienda en Barcelona sin coste alguno.",
+    "phoneLabel": "Llámanos",
+    "whatsappLabel": "WhatsApp",
+    "address": "Carrer d'Ausona, 71, 08033 Barcelona",
+    "form": {
+      "nombreLabel": "Nombre Completo",
+      "telefonoLabel": "Teléfono Móvil",
+      "mensajeLabel": "Tu Consulta (¿Qué necesitas aislar?)",
+      "nombrePlaceholder": "Ej: Juan Pérez",
+      "telefonoPlaceholder": "600 000 000",
+      "mensajePlaceholder": "Describe brevemente tu problema de humedad o frío...",
+      "submitText": "RECIBIR MI ESTUDIO GRATIS",
+      "disclaimer": "Respetamos tu privacidad. Recibirás tu presupuesto en menos de 24h."
+    }
+  }
 }

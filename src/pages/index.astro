@@ -15,13 +15,13 @@ import ContactSection from '../components/ContactSection.astro'
 import business from '../data/business.json'
 import home from '../data/home.json'
 
-const h1 = home.h1 || `${business.name} en ${business.serviceArea?.[0]}`
-const heroSubtitle = home.heroSubtitle || undefined
+const h1 = home.hero.h1 || `${business.name} en ${business.serviceArea?.[0]}`
+const heroSubtitle = home.hero.subtitle || undefined
 ---
 
 <BaseLayout
-  title={(home as any).siteTitle || `${business.name} en ${business.serviceArea?.[0]} | Presupuesto gratis`}
-  description={(home as any).metaDescription || business.description.slice(0, 155)}
+  title={home.meta.siteTitle || `${business.name} en ${business.serviceArea?.[0]} | Presupuesto gratis`}
+  description={home.meta.metaDescription || business.description.slice(0, 155)}
 >
 
   <UrgencyStrip />

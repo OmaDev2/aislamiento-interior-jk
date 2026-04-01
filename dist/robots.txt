@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /gracias/
+
+Sitemap: https://aislainteriorbarcelona.es/sitemap-index.xml

@@ -11,7 +11,7 @@ const year = new Date().getFullYear()
 
 <footer class="bg-blue-950 text-blue-100/60 pt-24 pb-12 overflow-hidden relative">
   <!-- Decorative highlight -->
-  <div class="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-[#F97316] to-transparent"></div>
+  <div class="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-brand-orange to-transparent"></div>
 
   <div class="container mx-auto px-4 relative z-10">
     <div class="grid lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
@@ -19,7 +19,7 @@ const year = new Date().getFullYear()
       <!-- Branding / NAP -->
       <div class="lg:col-span-1">
         <div class="mb-8">
-           <span class="text-2xl font-black text-white italic tracking-tighter">JK <span class="text-[#F97316]">AISLAMIENTOS</span></span>
+           <span class="text-2xl font-black text-white italic tracking-tighter">JK <span class="text-brand-orange">AISLAMIENTOS</span></span>
            <p class="text-[9px] font-bold text-blue-300 uppercase tracking-[0.2em] mt-1 ml-0.5 opacity-50">Barcelona & Área Metropolitana</p>
         </div>
         <p class="text-sm font-medium mb-10 leading-relaxed italic pr-4">
@@ -27,7 +27,7 @@ const year = new Date().getFullYear()
         </p>
         <div class="flex gap-4">
            {['facebook', 'instagram', 'google'].map((s) => (
-             <div class="w-10 h-10 bg-white/5 border border-white/5 rounded-xl flex items-center justify-center hover:bg-[#F97316]/20 hover:border-[#F97316]/30 transition-all cursor-pointer">
+             <div class="w-10 h-10 bg-white/5 border border-white/5 rounded-xl flex items-center justify-center hover:bg-brand-orange/20 hover:border-brand-orange/30 transition-all cursor-pointer">
                 <span class="text-white text-xs font-black uppercase tracking-widest">{s[0]}</span>
              </div>
            ))}
@@ -40,8 +40,8 @@ const year = new Date().getFullYear()
         <ul class="space-y-4">
           {serviceLinks.slice(0, 4).map(({ name, href }) => (
             <li>
-              <a href={href} class="text-sm font-medium hover:text-[#F97316] transition-colors flex items-center gap-3 group">
-                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-[#F97316] rounded-full transition-colors"></span>
+              <a href={href} class="text-sm font-medium hover:text-brand-orange transition-colors flex items-center gap-3 group">
+                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-brand-orange rounded-full transition-colors"></span>
                 {name}
               </a>
             </li>
@@ -55,8 +55,8 @@ const year = new Date().getFullYear()
         <ul class="space-y-4">
           {business.serviceArea.slice(0, 6).map((city) => (
             <li>
-              <a href={`/${city.toLowerCase().replace(/\s+/g, '-')}/`} class="text-sm font-medium hover:text-[#F97316] transition-colors flex items-center gap-3 group">
-                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-[#F97316] rounded-full transition-colors"></span>
+              <a href={`/${city.toLowerCase().replace(/\s+/g, '-')}/`} class="text-sm font-medium hover:text-brand-orange transition-colors flex items-center gap-3 group">
+                <span class="w-1.5 h-1.5 bg-blue-700 group-hover:bg-brand-orange rounded-full transition-colors"></span>
                 {city}
               </a>
             </li>
@@ -70,7 +70,7 @@ const year = new Date().getFullYear()
         <div class="space-y-6">
           <div class="group">
             <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1 italic">Llamada Gratuita</p>
-            <a href={`tel:${business.phone}`} class="text-2xl font-black text-white hover:text-[#F97316] transition-colors tracking-tight italic">
+            <a href={`tel:${business.phone}`} class="text-2xl font-black text-white hover:text-brand-orange transition-colors tracking-tight italic">
               {business.phone}
             </a>
           </div>
@@ -90,12 +90,16 @@ const year = new Date().getFullYear()
     <!-- Subfooter -->
     <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
-        {['Aviso Legal', 'Privacidad', 'Cookies'].map((l) => (
-          <a href="#" class="text-[10px] font-black uppercase tracking-[0.2em] hover:text-white transition-colors">{l}</a>
+        {[
+          { label: 'Aviso Legal', href: '/legal/aviso-legal/' },
+          { label: 'Privacidad', href: '/legal/politica-privacidad/' },
+          { label: 'Cookies', href: '/legal/politica-cookies/' },
+        ].map((l) => (
+          <a href={l.href} class="text-[10px] font-black uppercase tracking-[0.2em] hover:text-white transition-colors">{l.label}</a>
         ))}
       </div>
       <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500/50">
-        © {year} {business.name}. <span class="bg-[#F97316]/10 text-[#F97316] px-3 py-1 rounded ml-2">SISTEMA BEISSIER CERTIFICADO</span>
+        © {year} {business.name}. <span class="bg-brand-orange/10 text-brand-orange px-3 py-1 rounded ml-2">SISTEMA BEISSIER CERTIFICADO</span>
       </p>
     </div>
   </div>

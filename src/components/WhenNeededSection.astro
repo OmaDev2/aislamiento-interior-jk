@@ -1,60 +1,33 @@
 ---
+import home from '../data/home.json'
+
+const { heading, headingHighlight, subtitle, cards, cta } = home.whenNeeded
 ---
 
-<section id="cuando-lo-necesitas" class="py-24 lg:py-32 bg-white overflow-hidden">
+<section id="cuando-lo-necesitas" class="py-24 lg:py-32 bg-gray-50 overflow-hidden">
   <div class="container mx-auto px-4">
-    <!-- Header -->
     <div class="max-w-4xl mx-auto text-center mb-16 lg:mb-24">
       <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
-        ¿Es Beissier Therm In la Solución <br class="hidden md:block" /> 
-        <span class="text-blue-700">Para Tu Vivienda en Barcelona?</span>
+        {heading} <br class="hidden md:block" />
+        <span class="text-blue-700">{headingHighlight}</span>
       </h2>
-      <p class="text-xl text-gray-500 font-medium">El sistema está diseñado específicamente para estos casos:</p>
-      <div class="h-1 w-24 bg-[#F97316] mx-auto rounded-full mt-8"></div>
+      <p class="text-xl text-gray-500 font-medium">{subtitle}</p>
+      <div class="h-1 w-24 bg-brand-orange mx-auto rounded-full mt-8"></div>
     </div>
 
-    <!-- Features Grid -->
     <div class="grid md:grid-cols-3 gap-8 mb-20">
-      {[
-        {
-          title: "Edificios Donde NO se Puede Hacer SATE Exterior",
-          items: [
-            "Fachadas protegidas en Eixample, Gràcia o Ciutat Vella",
-            "Comunidad no aprueba obras exteriores",
-            "Edificio catalogado o con protección patrimonial",
-            "No tienes acceso a fachada (piso interior)"
-          ]
-        },
-        {
-          title: "Viviendas con Condensación y Moho Recurrente",
-          items: [
-            "Has pintado varias veces y vuelve a aparecer",
-            "Manchas negras en esquinas y detrás de muebles",
-            "Olor a humedad constante",
-            "Problemas respiratorios por moho"
-          ]
-        },
-        {
-          title: "Paredes con \"Efecto Pared Fría\"",
-          items: [
-            "Tocas la pared en invierno y está helada",
-            "La calefacción no consigue calentar",
-            "Sensación de frío aunque calefacción encendida",
-            "Diferencia térmica notable con otras habitaciones"
-          ]
-        }
-      ].map((card) => (
-        <div class="bg-gray-50 rounded-[2.5rem] p-10 border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 group">
-          <div class="w-12 h-12 bg-[#10B981] rounded-full flex items-center justify-center mb-8 shadow-lg shadow-[#10B981]/20">
+      {cards.map((card) => (
+        <div class="bg-white rounded-3xl p-10 border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 group">
+          <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/20">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          
+
           <h3 class="text-2xl font-black text-gray-900 mb-8 leading-tight group-hover:text-blue-900 transition-colors">
             {card.title}
           </h3>
-          
+
           <ul class="space-y-4">
             {card.items.map((item) => (
               <li class="flex items-start gap-3">
@@ -67,10 +40,9 @@
       ))}
     </div>
 
-    <!-- CTA -->
     <div class="text-center">
-      <a href="#contacto" class="inline-flex items-center gap-4 bg-[#F97316] hover:bg-blue-800 text-white px-10 py-6 rounded-full font-black text-xl shadow-2xl shadow-[#F97316]/30 transition-all transform hover:scale-105 active:scale-95">
-        SOLICITAR MI ESTUDIO GRATUITO
+      <a href="#contacto" class="inline-flex items-center gap-4 bg-brand-orange hover:bg-blue-800 text-white px-10 py-6 rounded-full font-black text-xl shadow-2xl shadow-brand-orange/30 transition-all transform hover:scale-105 active:scale-95">
+        {cta}
       </a>
     </div>
   </div>

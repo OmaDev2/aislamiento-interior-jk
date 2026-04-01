@@ -1,62 +1,39 @@
 ---
+import home from '../data/home.json'
 
+const { items, badge } = home.urgencyStrip
+
+const icons = [
+  '<path d="M2 12h20"/><path d="M12 2v20"/><path d="m4.93 4.93 14.14 14.14"/><path d="m14.14 4.93-9.21 9.21"/><path d="m19.07 4.93-14.14 14.14"/>',
+  '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+]
 ---
 
 <div
-  class="urgency-strip bg-[#EF4444] border-b border-red-700 shadow-md py-3 relative z-40 overflow-hidden"
+  class="urgency-strip bg-red-500 border-b border-red-700 shadow-md py-3 relative z-40 overflow-hidden"
 >
   <div class="container mx-auto px-4 md:px-6">
     <div
       class="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-10 gap-y-2 text-[11px] md:text-sm font-black text-white tracking-tight text-center md:text-left"
     >
-      <div class="flex items-center gap-2 group transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-100"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m4.93 4.93 14.14 14.14"/><path d="m14.14 4.93-9.21 9.21"/><path d="m19.07 4.93-14.14 14.14"/></svg>
-        <span class="transition-opacity uppercase tracking-wider"
-          >Paredes heladas</span
-        >
-      </div>
-
-      <div class="flex items-center gap-2 group transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-100"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
-        <span class="opacity-100 transition-opacity tracking-wide"
-          >Humedades</span
-        >
-      </div>
-
-      <div class="flex items-center gap-2 group transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-100"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-        <span class="opacity-100 transition-opacity tracking-wide"
-          >Moho y manchas</span
-        >
-      </div>
-
-      <div class="flex items-center gap-2 group transition-all">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-100"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-        <span class="opacity-100 transition-opacity tracking-wide"
-          >Facturas disparadas</span
-        >
-      </div>
+      {items.map((label, i) => (
+        <div class="flex items-center gap-2 group transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-100">
+            <Fragment set:html={icons[i]} />
+          </svg>
+          <span class="uppercase tracking-wider">{label}</span>
+        </div>
+      ))}
 
       <div
         class="flex items-center gap-2.5 bg-white border border-white px-3 md:px-5 py-1 md:py-1.5 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 cursor-default"
       >
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#EF4444"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="animate-pulse"
-        >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="animate-pulse">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
-        <span
-          class="text-[#B91C1C] uppercase tracking-widest text-[10px] md:text-[12px] font-black"
-          >Solución sin obras</span
-        >
+        <span class="text-red-800 uppercase tracking-widest text-[10px] md:text-[12px] font-black">{badge}</span>
       </div>
     </div>
   </div>
@@ -64,7 +41,6 @@
 
 <style>
   .urgency-strip {
-    /* Subtle dot texture over red */
     background-image: radial-gradient(
       circle at 2px 2px,
       rgba(255, 255, 255, 0.1) 1px,
@@ -75,11 +51,7 @@
   }
 
   @keyframes slideInDown {
-    from {
-      transform: translateY(-100%);
-    }
-    to {
-      transform: translateY(0);
-    }
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
   }
 </style>
