@@ -15,7 +15,7 @@ const {
     "Elimina el frío, el moho y la condensación en 48h sin reformar tu vivienda.",
 } = Astro.props;
 
-const phone = business.phone || "93 694 76 63";
+const phone = business.phone || "644 37 16 02";
 const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
 ---
 
@@ -81,9 +81,7 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
         </p>
 
         <!-- Pain Points Grid (Features) -->
-        <div
-          class="grid grid-cols-2 gap-4 mb-10 animate-fade-in-up delay-200"
-        >
+        <div class="grid grid-cols-2 gap-4 mb-10 animate-fade-in-up delay-200">
           {
             [
               {
@@ -105,23 +103,46 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
             ].map((item) => (
               <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all group">
                 <div class="w-10 h-10 bg-[#F97316]/20 rounded-xl flex items-center justify-center text-[#F97316] group-hover:scale-110 transition-transform">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <path d={item.icon} />
                   </svg>
                 </div>
-                <span class="text-sm font-bold tracking-tight">{item.text}</span>
+                <span class="text-sm font-bold tracking-tight">
+                  {item.text}
+                </span>
               </div>
             ))
           }
         </div>
 
         <!-- Trust Features -->
-        <div class="flex flex-wrap gap-x-6 gap-y-3 mb-12 animate-fade-in-up delay-300">
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-3 mb-12 animate-fade-in-up delay-300"
+        >
           {
             ["Sin tocar fachada", "Garantía 10 años", "Ahorro 40%"].map((f) => (
               <div class="flex items-center gap-2 text-sm font-medium text-blue-100/80">
-                <svg class="w-5 h-5 text-[#F97316]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                <svg
+                  class="w-5 h-5 text-[#F97316]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
                 {f}
               </div>
@@ -278,20 +299,42 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
 
   /* Animations */
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   @keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .animate-fade-in {
@@ -309,7 +352,13 @@ const phoneLink = `tel:${phone.replace(/\s/g, "")}`;
     animation: fadeInRight 1s ease-out forwards;
   }
 
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-300 { animation-delay: 0.3s; }
-  .delay-400 { animation-delay: 0.4s; }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
 </style>
