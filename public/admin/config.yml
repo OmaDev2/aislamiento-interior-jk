@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master # cámbialo a 'main' si tu repo usa main
+  branch: main
 
 media_folder: public/images
 public_folder: /images
@@ -26,53 +26,36 @@ collections:
           widget: string,
           required: false,
         }
-      - {
-          label: "H1 de la página",
-          name: h1,
-          widget: string,
-          hint: "Con keyword principal + ciudad",
-        }
-      - {
-          label: "Title (SEO)",
-          name: title,
-          widget: string,
-          hint: "Máximo 60 caracteres",
-        }
-      - {
-          label: "Meta description",
-          name: description,
-          widget: text,
-          hint: "Máximo 155 caracteres",
-        }
+      - { label: "H1 de la página", name: h1, widget: string }
+      - { label: "Title (SEO)", name: title, widget: string }
+      - { label: "Meta description", name: description, widget: text }
       - {
           label: "Imagen hero (URL)",
           name: heroImage,
           widget: string,
           required: false,
-          hint: "URL de Unsplash, ej: https://images.unsplash.com/photo-...?w=1200&h=675&fit=crop",
         }
       - label: "Barrios y zonas"
         name: neighborhoods
         widget: list
         required: false
-        field: { label: Barrio, name: neighborhood, widget: string }
+        field: { widget: string }
       - label: "Puntos de referencia"
         name: landmarks
         widget: list
         required: false
-        field: { label: Landmark, name: landmark, widget: string }
+        field: { widget: string }
       - {
           label: "Rango de precios",
           name: priceRange,
           widget: string,
           required: false,
-          hint: "Ej: 15-30 €/m²",
         }
       - label: Keywords
         name: keywords
         widget: list
         required: false
-        field: { label: Keyword, name: keyword, widget: string }
+        field: { widget: string }
       - label: "Preguntas frecuentes (FAQs)"
         name: faqs
         widget: list
@@ -94,18 +77,8 @@ collections:
     format: frontmatter
     fields:
       - { label: "Nombre del servicio", name: name, widget: string }
-      - {
-          label: "Title (SEO)",
-          name: title,
-          widget: string,
-          hint: "Máximo 60 caracteres",
-        }
-      - {
-          label: "Meta description",
-          name: description,
-          widget: text,
-          hint: "Máximo 155 caracteres",
-        }
+      - { label: "Title (SEO)", name: title, widget: string }
+      - { label: "Meta description", name: description, widget: text }
       - {
           label: "Imagen hero (URL)",
           name: heroImage,
@@ -117,30 +90,29 @@ collections:
           name: price,
           widget: string,
           required: false,
-          hint: "Ej: Desde 50€",
         }
       - {
           label: "Duración estimada",
           name: duration,
           widget: string,
           required: false,
-          hint: "Ej: 1-2 días",
         }
       - label: Keywords
         name: keywords
         widget: list
         required: false
-        field: { label: Keyword, name: keyword, widget: string }
+        field: { widget: string }
       - { label: Contenido de la página, name: body, widget: markdown }
 
   # ── Configuración del negocio + Home ─────────────────────────────────────────
   - name: settings
     label: "Configuración"
     files:
-      # --- CONFIGURACIÓN DE LA HOME (Mapeado exacto de home.json) ---
+      # --- PORTADA (Home) ---
       - name: home
         label: "Portada (Home)"
         file: src/data/home.json
+        format: json
         fields:
           - name: meta
             label: "Metadatos SEO"
@@ -161,15 +133,15 @@ collections:
               - label: "Textos de advertencia"
                 name: items
                 widget: list
-                field: { label: Texto, name: item, widget: string }
+                field: { widget: string }
 
           - name: hero
             label: "Sección Principal (Hero)"
             widget: object
             fields:
-              - { label: "H1", name: h1, widget: string }
+              - { label: "Título H1", name: h1, widget: string }
               - {
-                  label: "H1 Destacado (Color)",
+                  label: "H1 Destacado (Naranja)",
                   name: h1Highlight,
                   widget: string,
                 }
@@ -179,59 +151,29 @@ collections:
                   name: subtitleExtra,
                   widget: string,
                 }
-              - {
-                  label: "Sello de confianza",
-                  name: trustBadge,
-                  widget: string,
-                }
-              - label: "Puntos de dolor (Grid)"
+              - { label: "Texto Trust Badge", name: trustBadge, widget: string }
+              - label: "Puntos de dolor"
                 name: painPoints
                 widget: list
-                field: { label: Punto, name: point, widget: string }
-              - label: "Características de confianza (Debajo del grid)"
+                field: { widget: string }
+              - label: "Características de confianza"
                 name: trustFeatures
                 widget: list
-                field: { label: Característica, name: feature, widget: string }
+                field: { widget: string }
               - {
-                  label: "Texto CTA Principal",
+                  label: "Texto Botón Principal",
                   name: ctaPrimary,
                   widget: string,
                 }
               - name: form
-                label: "Textos del Formulario Hero"
+                label: "Formulario Hero"
                 widget: object
                 fields:
                   - { label: "Título", name: heading, widget: string }
                   - { label: "Subtítulo", name: subtitle, widget: string }
-                  - name: fields
-                    label: "Placeholders de los campos"
-                    widget: object
-                    fields:
-                      - { label: "Nombre", name: nombre, widget: string }
-                      - { label: "Teléfono", name: telefono, widget: string }
-                      - {
-                          label: "Código Postal",
-                          name: codigoPostal,
-                          widget: string,
-                        }
-                      - { label: "Problema", name: problema, widget: string }
-                  - name: options
-                    label: "Opciones del desplegable"
-                    widget: list
-                    fields:
-                      - {
-                          label: "Valor interno (código)",
-                          name: value,
-                          widget: string,
-                        }
-                      - { label: "Texto visible", name: label, widget: string }
+                  - { label: "Texto Botón", name: submitText, widget: string }
                   - {
-                      label: "Texto Botón Envío",
-                      name: submitText,
-                      widget: string,
-                    }
-                  - {
-                      label: "Aviso legal inferior",
+                      label: "Aviso inferior",
                       name: disclaimer,
                       widget: string,
                     }
@@ -240,593 +182,54 @@ collections:
             label: "Sección Problemas"
             widget: object
             fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
               - name: cards
-                label: "Tarjetas de Problemas"
+                label: "Tarjetas"
                 widget: list
                 fields:
                   - { label: "Título", name: title, widget: string }
-                  - { label: "Descripción", name: description, widget: text }
-              - { label: "Texto Botón", name: cta, widget: string }
+                  - { label: "Descripción", name: text, widget: text }
 
           - name: solution
             label: "Sección Solución"
             widget: object
             fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
-              - { label: "Subtítulo", name: subtitle, widget: string }
               - { label: "Introducción", name: intro, widget: text }
               - name: cards
-                label: "Tarjetas de Solución"
+                label: "Beneficios"
                 widget: list
                 fields:
                   - { label: "Título", name: title, widget: string }
                   - { label: "Descripción", name: description, widget: text }
-              - {
-                  label: "Llamada a la acción secundaria",
-                  name: secondaryCta,
-                  widget: string,
-                }
-
-          - name: espesor
-            label: "Sección Espesor (Comparativa)"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - {
-                  label: "Texto principal",
-                  name: text,
-                  widget: string,
-                  hint: "Permite etiquetas HTML simples como <strong>",
-                }
-              - {
-                  label: "Etiqueta informativa",
-                  name: infoBadge,
-                  widget: string,
-                }
-              - { label: "Texto Botón", name: cta, widget: string }
-              - {
-                  label: "Título de la caja comparativa",
-                  name: comparisonTitle,
-                  widget: string,
-                }
-              - name: comparisons
-                label: "Filas de la comparativa"
-                widget: list
-                fields:
-                  - { label: "Sistema", name: name, widget: string }
-                  - { label: "Espesor", name: thickness, widget: string }
-                  - {
-                      label: "¿Es el recomendado?",
-                      name: recommended,
-                      widget: boolean,
-                      required: false,
-                    }
-                  - {
-                      label: "Porcentaje de ancho en la barra",
-                      name: widthPercent,
-                      widget: number,
-                      required: false,
-                      hint: "De 0 a 100",
-                    }
-                  - {
-                      label: "¿Es no viable?",
-                      name: notViable,
-                      widget: boolean,
-                      required: false,
-                    }
-                  - {
-                      label: "Razón de no viabilidad",
-                      name: notViableReason,
-                      widget: string,
-                      required: false,
-                    }
-              - {
-                  label: "Pie de la comparativa",
-                  name: comparisonFooter,
-                  widget: string,
-                  hint: "Permite HTML simple",
-                }
-
-          - name: systemLayers
-            label: "Sección Capas del Sistema"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - {
-                  label: "Aviso importante",
-                  name: warning,
-                  widget: string,
-                  hint: "Permite HTML simple",
-                }
-              - name: layers
-                label: "Capas"
-                widget: list
-                fields:
-                  - { label: "Título de la capa", name: title, widget: string }
-                  - {
-                      label: "Subtítulo",
-                      name: subtitle,
-                      widget: string,
-                      required: false,
-                    }
-                  - {
-                      label: "Etiqueta extra",
-                      name: badge,
-                      widget: string,
-                      required: false,
-                    }
-                  - {
-                      label: "¿Destacar esta capa?",
-                      name: featured,
-                      widget: boolean,
-                      required: false,
-                      default: false,
-                    }
-                  - label: "Puntos de lista"
-                    name: items
-                    widget: list
-                    field: { label: Punto, name: item, widget: string }
-              - {
-                  label: "Título Caja Especificaciones",
-                  name: specsTitle,
-                  widget: string,
-                }
-              - {
-                  label: "Subtítulo Especificaciones",
-                  name: specsSubtitle,
-                  widget: string,
-                }
-              - name: specs
-                label: "Métricas de Especificaciones"
-                widget: list
-                fields:
-                  - {
-                      label: "Etiqueta (ej: Espesor total:)",
-                      name: label,
-                      widget: string,
-                    }
-                  - { label: "Valor", name: value, widget: string }
-                  - { label: "Icono (Emoji)", name: icon, widget: string }
-
-          - name: whenNeeded
-            label: "Sección Cuándo es necesario"
-            widget: object
-            fields:
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - { label: "Subtítulo", name: subtitle, widget: string }
-              - name: cards
-                label: "Tarjetas de Casos"
-                widget: list
-                fields:
-                  - { label: "Título del caso", name: title, widget: string }
-                  - label: "Ejemplos"
-                    name: items
-                    widget: list
-                    field: { label: Ejemplo, name: item, widget: string }
-              - { label: "Texto Botón", name: cta, widget: string }
-
-          - name: process
-            label: "Sección Proceso de Instalación"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - { label: "Subtítulo", name: subtitle, widget: string }
-              - name: steps
-                label: "Pasos"
-                widget: list
-                fields:
-                  - { label: "Título del paso", name: title, widget: string }
-                  - { label: "Tiempo estimado", name: time, widget: string }
-                  - label: "Tareas a realizar"
-                    name: items
-                    widget: list
-                    field:
-                      {
-                        label: Tarea,
-                        name: item,
-                        widget: string,
-                        hint: "Permite HTML simple",
-                      }
-              - name: trustSignal
-                label: "Llamada a la acción (Caja azul final)"
-                widget: object
-                fields:
-                  - { label: "Título", name: heading, widget: string }
-                  - { label: "Texto explicativo", name: text, widget: string }
-                  - {
-                      label: "Botón Primario",
-                      name: ctaPrimary,
-                      widget: string,
-                    }
-                  - {
-                      label: "Botón Secundario (Teléfono)",
-                      name: ctaSecondary,
-                      widget: string,
-                    }
-
-          - name: realCases
-            label: "Sección Casos Reales"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - { label: "Título Extra", name: headingExtra, widget: string }
-              - { label: "Subtítulo", name: subtitle, widget: string }
-              - name: cases
-                label: "Testimonios / Casos"
-                widget: list
-                fields:
-                  - {
-                      label: "Etiqueta de zona (Ej: Eixample)",
-                      name: tag,
-                      widget: string,
-                    }
-                  - { label: "Título del caso", name: title, widget: string }
-                  - {
-                      label: "Superficie tratada",
-                      name: treated,
-                      widget: string,
-                    }
-                  - {
-                      label: "Habitaciones / Zona",
-                      name: rooms,
-                      widget: string,
-                    }
-                  - {
-                      label: "Problema original",
-                      name: problem,
-                      widget: string,
-                    }
-                  - {
-                      label: "Resultado obtenido",
-                      name: result,
-                      widget: string,
-                    }
-                  - {
-                      label: "Testimonio textual",
-                      name: testimony,
-                      widget: text,
-                    }
-                  - {
-                      label: "Autor del testimonio",
-                      name: author,
-                      widget: string,
-                    }
-              - name: trustBadges
-                label: "Insignias numéricas finales"
-                widget: list
-                fields:
-                  - { label: "Número/Valor", name: value, widget: string }
-                  - { label: "Etiqueta de texto", name: label, widget: string }
-                  - { label: "Icono (Emoji)", name: icon, widget: string }
 
           - name: faq
-            label: "Sección Preguntas Frecuentes"
+            label: "Sección FAQ"
             widget: object
             fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
               - name: items
-                label: "Listado de FAQs"
+                label: "Preguntas"
                 widget: list
                 fields:
                   - { label: "Pregunta", name: question, widget: string }
-                  - {
-                      label: "Respuesta",
-                      name: answer,
-                      widget: string,
-                      hint: "Permite HTML simple como <strong>",
-                    }
-              - {
-                  label: "Texto de soporte extra",
-                  name: supportText,
-                  widget: string,
-                }
-              - {
-                  label: "Texto botón WhatsApp",
-                  name: whatsappCta,
-                  widget: string,
-                }
+                  - { label: "Respuesta", name: answer, widget: text }
 
-          - name: cityGrid
-            label: "Sección Zonas de Servicio"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - { label: "Subtítulo", name: subtitle, widget: string }
-              - label: "Puntos de confianza finales (Grid inferior)"
-                name: signals
-                widget: list
-                field: { label: Punto, name: signal, widget: string }
-
-          - name: contact
-            label: "Sección de Contacto (Footer)"
-            widget: object
-            fields:
-              - { label: "Etiqueta superior", name: badge, widget: string }
-              - { label: "Título", name: heading, widget: string }
-              - {
-                  label: "Título Destacado",
-                  name: headingHighlight,
-                  widget: string,
-                }
-              - { label: "Subtítulo", name: subtitle, widget: text }
-              - { label: "Etiqueta Teléfono", name: phoneLabel, widget: string }
-              - {
-                  label: "Etiqueta WhatsApp",
-                  name: whatsappLabel,
-                  widget: string,
-                }
-              - { label: "Dirección", name: address, widget: string }
-              - name: form
-                label: "Textos del Formulario de Contacto"
-                widget: object
-                fields:
-                  - {
-                      label: "Etiqueta Nombre",
-                      name: nombreLabel,
-                      widget: string,
-                    }
-                  - {
-                      label: "Etiqueta Teléfono",
-                      name: telefonoLabel,
-                      widget: string,
-                    }
-                  - {
-                      label: "Etiqueta Mensaje",
-                      name: mensajeLabel,
-                      widget: string,
-                    }
-                  - {
-                      label: "Placeholder Nombre",
-                      name: nombrePlaceholder,
-                      widget: string,
-                    }
-                  - {
-                      label: "Placeholder Teléfono",
-                      name: telefonoPlaceholder,
-                      widget: string,
-                    }
-                  - {
-                      label: "Placeholder Mensaje",
-                      name: mensajePlaceholder,
-                      widget: string,
-                    }
-                  - {
-                      label: "Texto Botón Envío",
-                      name: submitText,
-                      widget: string,
-                    }
-                  - {
-                      label: "Aviso legal (Disclaimer)",
-                      name: disclaimer,
-                      widget: string,
-                    }
-
-      # --- CONFIGURACIÓN DEL NEGOCIO (Idéntica a la tuya) ---
+      # --- DATOS DEL NEGOCIO ---
       - name: business
         label: "Datos del negocio"
         file: src/data/business.json
+        format: json
         fields:
           - { label: "Nombre del negocio", name: name, widget: string }
-          - { label: "Nombre legal", name: legalName, widget: string }
-          - {
-              label: "Tipo Schema.org",
-              name: type,
-              widget: string,
-              hint: "Ej: Plumber, Electrician, HVACBusiness, HomeAndConstructionBusiness",
-            }
-          - { label: Teléfono, name: phone, widget: string }
-          - { label: Email, name: email, widget: string, required: false }
+          - { label: "Teléfono", name: phone, widget: string }
           - { label: "URL del sitio", name: url, widget: string }
-          - {
-              label: "Logo (ruta)",
-              name: logo,
-              widget: string,
-              hint: "Ej: /images/logo.png",
-            }
-          - label: "Rango de precios"
-            name: priceRange
-            widget: select
-            options: ["$", "$$", "$$$", "$$$$"]
-          - label: "Horarios de atención"
-            name: openingHours
-            widget: list
-            field:
-              {
-                label: Horario,
-                name: hours,
-                widget: string,
-                hint: "Ej: Mo-Fr 08:00-18:00",
-              }
           - label: "Ciudades de servicio"
             name: serviceArea
             widget: list
-            field: { label: Ciudad, name: city, widget: string }
-          - label: Servicios
+            field: { widget: string }
+          - label: "Servicios"
             name: services
             widget: list
-            field: { label: Servicio, name: service, widget: string }
-          - label: "Perfiles sociales"
-            name: socialProfiles
-            widget: object
-            fields:
-              - {
-                  label: Facebook,
-                  name: facebook,
-                  widget: string,
-                  required: false,
-                }
-              - {
-                  label: Instagram,
-                  name: instagram,
-                  widget: string,
-                  required: false,
-                }
-              - {
-                  label: "Google Business",
-                  name: google,
-                  widget: string,
-                  required: false,
-                }
-              - { label: Yelp, name: yelp, widget: string, required: false }
-          - {
-              label: "Año de fundación",
-              name: founded,
-              widget: string,
-              required: false,
-            }
-          - label: "Dirección física (opcional — solo si el negocio tiene local)"
-            name: address
-            widget: object
-            required: false
-            hint: "Dejar vacío si es SAB (negocio sin local físico)"
-            fields:
-              - {
-                  label: "Calle y número",
-                  name: street,
-                  widget: string,
-                  required: false,
-                  hint: "Ej: Calle Mayor 12, 3º",
-                }
-              - {
-                  label: "Código postal",
-                  name: postalCode,
-                  widget: string,
-                  required: false,
-                }
-              - { label: "Ciudad", name: city, widget: string, required: false }
-          - label: "Coordenadas GPS (opcional — si tienes dirección física)"
-            name: geo
-            widget: object
-            required: false
-            hint: "Busca las coordenadas en maps.google.com → clic derecho sobre el local"
-            fields:
-              - {
-                  label: Latitud,
-                  name: latitude,
-                  widget: string,
-                  required: false,
-                  hint: "Ej: 41.6488",
-                }
-              - {
-                  label: Longitud,
-                  name: longitude,
-                  widget: string,
-                  required: false,
-                  hint: "Ej: -0.8891",
-                }
-          - {
-              label: Descripción,
-              name: description,
-              widget: text,
-              hint: "1-2 frases con keyword principal",
-            }
-          - label: "Reseñas (solo datos reales)"
-            name: reviews
-            widget: object
-            fields:
-              - {
-                  label: "Nota media",
-                  name: ratingValue,
-                  widget: string,
-                  required: false,
-                  hint: "Ej: 4.8 — dejar vacío si no tienes reseñas verificables",
-                }
-              - {
-                  label: "Número de reseñas",
-                  name: reviewCount,
-                  widget: string,
-                  required: false,
-                }
-          - label: "Tema visual"
-            name: daisyuiTheme
-            widget: select
-            hint: "Elige el tema visual del sitio. Vista previa en daisyui.com/docs/themes"
-            options:
-              - light
-              - dark
-              - cupcake
-              - bumblebee
-              - emerald
-              - corporate
-              - synthwave
-              - retro
-              - cyberpunk
-              - valentine
-              - halloween
-              - garden
-              - forest
-              - aqua
-              - lofi
-              - pastel
-              - fantasy
-              - wireframe
-              - black
-              - luxury
-              - dracula
-              - cmyk
-              - autumn
-              - business
-              - acid
-              - lemonade
-              - night
-              - coffee
-              - winter
-              - dim
-              - nord
-              - sunset
-              - caramellatte
-              - abyss
-              - silk
-          - {
-              label: "Google Tag Manager ID",
-              name: gtmId,
-              widget: string,
-              required: false,
-              hint: "Ej: GTM-XXXXXXX — dejar vacío si no tienes GTM",
-            }
-          - {
-              label: "Google Search Console",
-              name: scVerification,
-              widget: string,
-              required: false,
-              hint: "Código de verificación de Search Console (solo el código, sin las comillas)",
-            }
+            field: { widget: string }
+          - { label: "GTM ID", name: gtmId, widget: string, required: false }
