@@ -290,23 +290,23 @@
   },
   "problems": {
     "badge": "Realidad en Barcelona",
-    "heading": "¿Te Suena Alguno de Estos Problemas en tu Vivienda?",
+    "heading": "¿Padeces estos problemas por falta de aislamiento térmico en tus paredes interiores?",
     "cards": [
       {
-        "title": "Paredes Heladas en Invierno",
-        "description": "Tocas la pared y está congelada. Tu calefacción trabaja el doble sin conseguir confort en tu piso de Barcelona."
+        "title": "El temido \"Efecto Pared Fría\" en invierno",
+        "description": "Tocas la pared y está helada. Por mucho que subas la calefacción, el calor se escapa rápidamente y el confort desaparece. Un buen aislamiento térmico interior es la única forma de frenar esta pérdida constante de temperatura hacia la calle."
       },
       {
-        "title": "Moho y Manchas Negras",
-        "description": "Aparecen en esquinas y detrás de muebles. Afecta a tu salud y la de tu familia. Problema común en edificios antiguos."
+        "title": "Humedad por condensación, moho y malos olores",
+        "description": "El choque entre la calefacción de tu casa y las paredes frías genera condensación superficial. Esto no solo arruina la pintura con manchas negras, sino que respirar esas esporas de moho a diario es un riesgo real para tu salud y la de tu familia."
       },
       {
-        "title": "Facturas Desorbitadas",
-        "description": "Pagas una fortuna en calefacción pero el calor se escapa por las paredes mal aisladas."
+        "title": "Facturas de luz y gas desorbitadas",
+        "description": "Si tu vivienda no retiene la temperatura, estás, literalmente, tirando el dinero por la fachada. Aislar las paredes interiores reduce drásticamente tu demanda energética mensual, permitiéndote amortizar la inversión muy rápido"
       },
       {
-        "title": "No Puedes Hacer SATE Exterior",
-        "description": "Edificio protegido o la comunidad no aprueba obras en fachada. Situación muy común en el Eixample y Ciutat Vella."
+        "title": "Tu comunidad no aprueba hacer obras en el exterior",
+        "description": "¿No te permiten instalar SATE en la fachada o vives en un edificio protegido? Necesitas una solución de aislamiento térmico sin obras mayores que dependa 100% de ti y que no te robe metros cuadrados útiles de tus habitaciones."
       }
     ],
     "cta": "Quiero Quitar la Humedad de Mi Casa"
@@ -403,13 +403,15 @@
     "trustFeatures": [
       "Sin tocar fachada",
       "Demanda energética global -20%",
-      "Transmitancia térmica mejora de un 40%"
+      "Mejora de hasta un 40% en la transmitancia térmica",
+      "Reducción de puentes térmicos"
     ],
     "subtitle": "¿Cansado de las paredes heladas y las manchas de moho recurrentes?  aisla térmicamente tu hogar sin obras.",
     "subtitleExtra": "Protege la salud de tu familia y ahorra  en tu próxima factura de calefacción.",
     "painPoints": [
       "Paredes Frías",
       "Moho y Humedad",
+      "Condensación ",
       "Facturas Altas",
       "Sin Obra Exterior"
     ]
