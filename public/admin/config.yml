@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # ¡IMPORTANTE! Cámbialo a 'main' si tu rama se llama así
+  branch: main
 
 media_folder: public/images
 public_folder: /images
@@ -171,6 +171,24 @@ collections:
                 fields:
                   - { label: "Título", name: heading, widget: string }
                   - { label: "Subtítulo", name: subtitle, widget: string }
+                  - name: fields
+                    label: "Placeholders de los campos"
+                    widget: object
+                    fields:
+                      - { label: "Nombre", name: nombre, widget: string }
+                      - { label: "Teléfono", name: telefono, widget: string }
+                      - {
+                          label: "Código Postal",
+                          name: codigoPostal,
+                          widget: string,
+                        }
+                      - { label: "Problema", name: problema, widget: string }
+                  - name: options
+                    label: "Opciones del desplegable"
+                    widget: list
+                    fields:
+                      - { label: "Valor interno", name: value, widget: string }
+                      - { label: "Texto visible", name: label, widget: string }
                   - { label: "Texto Botón", name: submitText, widget: string }
                   - {
                       label: "Aviso inferior",
@@ -182,19 +200,23 @@ collections:
             label: "Sección Problemas"
             widget: object
             fields:
+              - { label: "Etiqueta", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
               - name: cards
                 label: "Tarjetas"
                 widget: list
                 fields:
                   - { label: "Título", name: title, widget: string }
-                  - { label: "Descripción", name: text, widget: text }
+                  - { label: "Descripción", name: description, widget: text } # <-- Aquí estaba el fallo
+              - { label: "Llamada a la acción", name: cta, widget: string }
 
           - name: solution
             label: "Sección Solución"
             widget: object
             fields:
+              - { label: "Etiqueta", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
+              - { label: "Subtítulo", name: subtitle, widget: string }
               - { label: "Introducción", name: intro, widget: text }
               - name: cards
                 label: "Beneficios"
@@ -202,18 +224,315 @@ collections:
                 fields:
                   - { label: "Título", name: title, widget: string }
                   - { label: "Descripción", name: description, widget: text }
+              - {
+                  label: "Llamada a la acción secundaria",
+                  name: secondaryCta,
+                  widget: string,
+                }
+
+          - name: espesor
+            label: "Sección Factor Espesor"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Texto", name: text, widget: text }
+              - {
+                  label: "Etiqueta informativa",
+                  name: infoBadge,
+                  widget: string,
+                }
+              - { label: "Llamada a la acción", name: cta, widget: string }
+              - {
+                  label: "Título comparativa",
+                  name: comparisonTitle,
+                  widget: string,
+                }
+              - name: comparisons
+                label: "Comparativas"
+                widget: list
+                fields:
+                  - { label: "Nombre", name: name, widget: string }
+                  - { label: "Espesor", name: thickness, widget: string }
+                  - {
+                      label: "Recomendado",
+                      name: recommended,
+                      widget: boolean,
+                      required: false,
+                    }
+                  - {
+                      label: "Porcentaje ancho",
+                      name: widthPercent,
+                      widget: number,
+                      required: false,
+                    }
+                  - {
+                      label: "No viable",
+                      name: notViable,
+                      widget: boolean,
+                      required: false,
+                    }
+                  - {
+                      label: "Razón no viable",
+                      name: notViableReason,
+                      widget: string,
+                      required: false,
+                    }
+              - {
+                  label: "Footer comparativa",
+                  name: comparisonFooter,
+                  widget: string,
+                }
+
+          - name: systemLayers
+            label: "Sección Capas del Sistema"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Aviso importante", name: warning, widget: text }
+              - name: layers
+                label: "Capas"
+                widget: list
+                fields:
+                  - { label: "Título", name: title, widget: string }
+                  - {
+                      label: "Subtítulo",
+                      name: subtitle,
+                      widget: string,
+                      required: false,
+                    }
+                  - {
+                      label: "Items",
+                      name: items,
+                      widget: list,
+                      field: { name: item, widget: string },
+                    }
+                  - {
+                      label: "Destacado",
+                      name: featured,
+                      widget: boolean,
+                      required: false,
+                    }
+                  - {
+                      label: "Etiqueta extra",
+                      name: badge,
+                      widget: string,
+                      required: false,
+                    }
+              - {
+                  label: "Título especificaciones",
+                  name: specsTitle,
+                  widget: string,
+                }
+              - {
+                  label: "Subtítulo especificaciones",
+                  name: specsSubtitle,
+                  widget: string,
+                }
+              - name: specs
+                label: "Especificaciones"
+                widget: list
+                fields:
+                  - { label: "Etiqueta", name: label, widget: string }
+                  - { label: "Valor", name: value, widget: string }
+                  - { label: "Icono", name: icon, widget: string }
+
+          - name: whenNeeded
+            label: "Sección Cuándo lo Necesitas"
+            widget: object
+            fields:
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Subtítulo", name: subtitle, widget: string }
+              - name: cards
+                label: "Tarjetas"
+                widget: list
+                fields:
+                  - { label: "Título", name: title, widget: string }
+                  - {
+                      label: "Items",
+                      name: items,
+                      widget: list,
+                      field: { name: item, widget: string },
+                    }
+              - { label: "Llamada a la acción", name: cta, widget: string }
+
+          - name: process
+            label: "Sección Proceso"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Subtítulo", name: subtitle, widget: string }
+              - name: steps
+                label: "Pasos"
+                widget: list
+                fields:
+                  - { label: "Título", name: title, widget: string }
+                  - { label: "Tiempo", name: time, widget: string }
+                  - {
+                      label: "Items",
+                      name: items,
+                      widget: list,
+                      field: { name: item, widget: string },
+                    }
+              - name: trustSignal
+                label: "Caja final confianza"
+                widget: object
+                fields:
+                  - { label: "Título", name: heading, widget: string }
+                  - { label: "Texto", name: text, widget: string }
+                  - {
+                      label: "Botón Primario",
+                      name: ctaPrimary,
+                      widget: string,
+                    }
+                  - {
+                      label: "Botón Secundario",
+                      name: ctaSecondary,
+                      widget: string,
+                    }
+
+          - name: realCases
+            label: "Sección Casos Reales"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - { label: "Título Extra", name: headingExtra, widget: string }
+              - { label: "Subtítulo", name: subtitle, widget: string }
+              - name: cases
+                label: "Casos"
+                widget: list
+                fields:
+                  - { label: "Etiqueta Zona", name: tag, widget: string }
+                  - { label: "Título", name: title, widget: string }
+                  - { label: "Tratado", name: treated, widget: string }
+                  - { label: "Habitaciones", name: rooms, widget: string }
+                  - { label: "Problema", name: problem, widget: string }
+                  - { label: "Resultado", name: result, widget: string }
+                  - { label: "Testimonio", name: testimony, widget: text }
+                  - { label: "Autor", name: author, widget: string }
+              - name: trustBadges
+                label: "Insignias de Confianza"
+                widget: list
+                fields:
+                  - { label: "Valor", name: value, widget: string }
+                  - { label: "Etiqueta", name: label, widget: string }
+                  - { label: "Icono", name: icon, widget: string }
 
           - name: faq
             label: "Sección FAQ"
             widget: object
             fields:
+              - { label: "Etiqueta", name: badge, widget: string }
               - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
               - name: items
                 label: "Preguntas"
                 widget: list
                 fields:
                   - { label: "Pregunta", name: question, widget: string }
                   - { label: "Respuesta", name: answer, widget: text }
+              - { label: "Texto soporte", name: supportText, widget: string }
+              - { label: "CTA WhatsApp", name: whatsappCta, widget: string }
+
+          - name: cityGrid
+            label: "Sección Áreas de Servicio"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Subtítulo", name: subtitle, widget: string }
+              - name: signals
+                label: "Señales de confianza"
+                widget: list
+                field: { name: signal, widget: string }
+
+          - name: contact
+            label: "Sección Contacto Final"
+            widget: object
+            fields:
+              - { label: "Etiqueta", name: badge, widget: string }
+              - { label: "Título", name: heading, widget: string }
+              - {
+                  label: "Título Destacado",
+                  name: headingHighlight,
+                  widget: string,
+                }
+              - { label: "Subtítulo", name: subtitle, widget: string }
+              - { label: "Etiqueta Teléfono", name: phoneLabel, widget: string }
+              - {
+                  label: "Etiqueta WhatsApp",
+                  name: whatsappLabel,
+                  widget: string,
+                }
+              - { label: "Dirección", name: address, widget: string }
+              - name: form
+                label: "Textos del Formulario"
+                widget: object
+                fields:
+                  - {
+                      label: "Etiqueta Nombre",
+                      name: nombreLabel,
+                      widget: string,
+                    }
+                  - {
+                      label: "Etiqueta Tel",
+                      name: telefonoLabel,
+                      widget: string,
+                    }
+                  - {
+                      label: "Etiqueta Mensaje",
+                      name: mensajeLabel,
+                      widget: string,
+                    }
+                  - {
+                      label: "Placeholder Nombre",
+                      name: nombrePlaceholder,
+                      widget: string,
+                    }
+                  - {
+                      label: "Placeholder Tel",
+                      name: telefonoPlaceholder,
+                      widget: string,
+                    }
+                  - {
+                      label: "Placeholder Mensaje",
+                      name: mensajePlaceholder,
+                      widget: string,
+                    }
+                  - { label: "Botón Envío", name: submitText, widget: string }
+                  - { label: "Aviso Legal", name: disclaimer, widget: string }
 
       # --- DATOS DEL NEGOCIO ---
       - name: business
